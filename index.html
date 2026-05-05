@@ -1,0 +1,2147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raga Vidyā — The Complete Science of Indian Classical Music | Cultural Musings</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Cinzel:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════════
+   ROOT & THEME
+══════════════════════════════════════════ */
+:root {
+  --gold:       #C9A84C;
+  --deep-gold:  #8B6914;
+  --amber:      #D4891A;
+  --crimson:    #8B1A2E;
+  --teal:       #1A6B5C;
+  --indigo:     #2E3A8B;
+  --ivory:      #FDFAF3;
+  --parchment:  #F5EDD8;
+  --warm-white: #FAF6EE;
+  --dark:       #0D0A05;
+  --charcoal:   #1A1410;
+  --text:       #2C1F0A;
+  --muted:      #5C4A2E;
+  --border:     rgba(201,168,76,0.25);
+  --shadow:     rgba(13,10,5,0.12);
+  --navy:       #0F1E3A;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'EB Garamond',serif;
+  background:var(--ivory);
+  color:var(--text);
+  overflow-x:hidden;
+  line-height:1.75;
+  font-size:17px;
+}
+
+/* ══════════════════════════════════════════
+   PRINT / PAGE SIMULATION
+══════════════════════════════════════════ */
+@media print {
+  .no-print{display:none!important;}
+  body{background:#fff;font-size:11pt;}
+  .page-break{page-break-before:always;}
+  .cover-section{min-height:auto;}
+}
+
+/* ══════════════════════════════════════════
+   TOP NAV BAR
+══════════════════════════════════════════ */
+#topbar {
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  height:56px;
+  background:rgba(13,10,5,0.96);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 2.5%;
+}
+.tb-brand{
+  font-family:'Cinzel',serif;
+  font-size:0.72rem;letter-spacing:2px;
+  color:var(--gold);text-decoration:none;
+}
+.tb-nav{display:flex;gap:1.2rem;list-style:none;}
+.tb-nav a{
+  font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:1.2px;
+  color:rgba(253,250,243,0.6);text-decoration:none;text-transform:uppercase;
+  transition:color 0.2s;
+}
+.tb-nav a:hover{color:var(--gold);}
+.tb-back{
+  font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:1.5px;
+  color:var(--gold);text-decoration:none;text-transform:uppercase;
+  border:1px solid rgba(201,168,76,0.4);padding:5px 12px;
+  transition:all 0.2s;
+}
+.tb-back:hover{background:var(--gold);color:var(--dark);}
+
+/* ══════════════════════════════════════════
+   PROGRESS BAR
+══════════════════════════════════════════ */
+#progress-bar{
+  position:fixed;top:56px;left:0;height:2px;
+  background:linear-gradient(to right,var(--amber),var(--gold));
+  z-index:998;width:0;transition:width 0.1s;
+}
+
+/* ══════════════════════════════════════════
+   TABLE OF CONTENTS SIDEBAR
+══════════════════════════════════════════ */
+#toc-sidebar {
+  position:fixed;left:0;top:56px;bottom:0;
+  width:240px;
+  background:rgba(13,10,5,0.97);
+  border-right:1px solid var(--border);
+  overflow-y:auto;
+  transform:translateX(-100%);
+  transition:transform 0.35s cubic-bezier(0.22,1,0.36,1);
+  z-index:900;
+  padding:1.5rem 0;
+}
+#toc-sidebar.open{transform:translateX(0);}
+.toc-header{
+  font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:3px;
+  color:var(--gold);text-transform:uppercase;
+  padding:0 1.5rem 1rem;
+  border-bottom:1px solid var(--border);margin-bottom:0.8rem;
+}
+.toc-part{
+  font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:2px;
+  color:rgba(201,168,76,0.6);text-transform:uppercase;
+  padding:0.9rem 1.5rem 0.3rem;
+}
+.toc-link{
+  display:block;
+  font-family:'EB Garamond',serif;font-size:0.88rem;
+  color:rgba(253,250,243,0.55);
+  text-decoration:none;
+  padding:0.4rem 1.5rem 0.4rem 2rem;
+  transition:color 0.2s,background 0.2s;
+  border-left:2px solid transparent;
+}
+.toc-link:hover,.toc-link.active{
+  color:var(--gold);
+  background:rgba(201,168,76,0.06);
+  border-left-color:var(--gold);
+}
+
+/* TOC toggle */
+#toc-toggle{
+  position:fixed;left:0;top:50%;transform:translateY(-50%);
+  z-index:901;
+  background:var(--gold);color:var(--dark);
+  border:none;cursor:pointer;
+  width:28px;height:56px;
+  font-size:0.7rem;
+  display:flex;align-items:center;justify-content:center;
+  transition:left 0.35s cubic-bezier(0.22,1,0.36,1);
+  border-radius:0 4px 4px 0;
+}
+#toc-toggle.open{left:240px;}
+#toc-backdrop{
+  display:none;position:fixed;inset:0;z-index:899;
+  background:rgba(0,0,0,0.4);
+}
+#toc-backdrop.open{display:block;}
+
+/* ══════════════════════════════════════════
+   MAIN LAYOUT
+══════════════════════════════════════════ */
+main{
+  padding-top:56px;
+  max-width:920px;
+  margin:0 auto;
+  padding-left:2rem;
+  padding-right:2rem;
+}
+
+/* ══════════════════════════════════════════
+   COVER PAGE
+══════════════════════════════════════════ */
+.cover-section{
+  min-height:calc(100vh - 56px);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;
+  padding:4rem 2rem;
+  position:relative;
+  overflow:hidden;
+}
+.cover-section::before{
+  content:'';
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 30%,rgba(201,168,76,0.08) 0%,transparent 70%);
+  pointer-events:none;
+}
+.cover-mandala{
+  width:320px;height:320px;
+  opacity:0.06;
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  animation:slowSpin 120s linear infinite;
+}
+@keyframes slowSpin{to{transform:translate(-50%,-50%) rotate(360deg);}}
+
+.cover-eyebrow{
+  font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:4px;
+  color:var(--amber);text-transform:uppercase;margin-bottom:1.5rem;
+}
+.cover-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3.5rem,8vw,6.5rem);
+  font-weight:300;line-height:1;
+  color:var(--text);margin-bottom:0.5rem;
+}
+.cover-title-skt{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.5rem,3vw,2.2rem);
+  font-weight:300;font-style:italic;
+  color:var(--amber);margin-bottom:1.5rem;
+}
+.cover-subtitle{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.1rem,2vw,1.45rem);
+  font-weight:300;font-style:italic;
+  color:var(--muted);max-width:620px;
+  margin:0 auto 2.5rem;line-height:1.65;
+}
+.cover-divider{
+  width:120px;height:1px;
+  background:linear-gradient(to right,transparent,var(--gold),transparent);
+  margin:2rem auto;
+}
+.cover-meta{
+  display:flex;gap:2.5rem;justify-content:center;
+  flex-wrap:wrap;margin-bottom:2.5rem;
+}
+.cover-meta-item{
+  text-align:center;
+}
+.cover-meta-num{
+  font-family:'Cinzel',serif;font-size:1.8rem;
+  color:var(--gold);display:block;line-height:1;
+}
+.cover-meta-label{
+  font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:2px;
+  color:var(--muted);text-transform:uppercase;margin-top:0.3rem;
+}
+.cover-tags{
+  display:flex;gap:0.6rem;justify-content:center;flex-wrap:wrap;
+}
+.cover-tag{
+  font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:1.2px;
+  border:1px solid rgba(201,168,76,0.4);color:var(--amber);
+  padding:0.3rem 0.8rem;border-radius:2px;text-transform:uppercase;
+}
+.scroll-invite{
+  position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:0.4rem;
+  font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:2px;
+  color:rgba(44,31,10,0.4);text-transform:uppercase;animation:bounce 2.5s ease-in-out infinite;
+}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(6px);}}
+.scroll-invite::after{content:'↓';font-size:1rem;color:var(--gold);}
+
+/* ══════════════════════════════════════════
+   PART HEADER
+══════════════════════════════════════════ */
+.part-header{
+  padding:4rem 0 2rem;
+  border-top:1px solid var(--border);
+  margin-top:4rem;
+  position:relative;
+}
+.part-num{
+  font-family:'Cormorant Garamond',serif;font-size:6rem;font-weight:300;
+  color:rgba(201,168,76,0.08);
+  position:absolute;top:-1rem;right:0;
+  line-height:1;pointer-events:none;
+  font-style:italic;
+}
+.part-eyebrow{
+  font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:3.5px;
+  color:var(--amber);text-transform:uppercase;margin-bottom:0.7rem;
+}
+.part-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.2rem,5vw,3.8rem);
+  font-weight:300;line-height:1.1;color:var(--text);
+}
+.part-title em{font-style:italic;color:var(--amber);}
+.part-intro{
+  font-size:1.1rem;font-style:italic;color:var(--muted);
+  max-width:720px;margin-top:1.2rem;line-height:1.8;
+}
+
+/* ══════════════════════════════════════════
+   SECTIONS & TYPOGRAPHY
+══════════════════════════════════════════ */
+.section{padding:2.5rem 0;border-bottom:1px solid rgba(201,168,76,0.1);}
+.section:last-child{border-bottom:none;}
+
+h2.section-h{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.7rem,3.5vw,2.4rem);
+  font-weight:400;color:var(--text);
+  margin-bottom:1.2rem;line-height:1.2;
+}
+h2.section-h em{color:var(--amber);font-style:italic;}
+
+h3.sub-h{
+  font-family:'Cinzel',serif;
+  font-size:0.82rem;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--deep-gold);margin:2rem 0 0.8rem;
+}
+
+p{margin-bottom:1.1rem;font-size:1.05rem;line-height:1.85;}
+p:last-child{margin-bottom:0;}
+
+/* PULL QUOTE */
+.pull{
+  border-left:3px solid var(--gold);
+  padding:1.2rem 1.8rem;
+  background:rgba(201,168,76,0.06);
+  margin:2rem 0;
+  border-radius:0 3px 3px 0;
+}
+.pull p{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;font-size:1.2rem;
+  color:var(--text);margin:0;line-height:1.6;
+}
+.pull cite{
+  display:block;margin-top:0.8rem;
+  font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:1.5px;
+  color:var(--amber);font-style:normal;
+}
+
+/* SANSKRIT BLOCK */
+.skt-block{
+  text-align:center;padding:1.5rem;
+  background:rgba(201,168,76,0.04);
+  border:1px solid var(--border);
+  margin:2rem 0;border-radius:2px;
+}
+.skt-text{
+  font-family:'Cormorant Garamond',serif;font-size:1.5rem;
+  color:var(--text);font-style:italic;line-height:1.6;
+}
+.skt-trans{
+  font-family:'EB Garamond',serif;font-size:0.95rem;
+  color:var(--muted);margin-top:0.5rem;font-style:italic;
+}
+.skt-source{
+  font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:1.5px;
+  color:var(--amber);text-transform:uppercase;margin-top:0.5rem;
+}
+
+/* ORNAMENTAL DIVIDER */
+.ornament{
+  text-align:center;color:var(--gold);
+  font-size:1.2rem;letter-spacing:0.5rem;
+  margin:2rem 0;opacity:0.6;
+}
+
+/* KEY POINTS LIST */
+.key-list{list-style:none;padding:0;margin:1.5rem 0;}
+.key-list li{
+  display:flex;gap:1rem;align-items:flex-start;
+  padding:0.7rem 0;
+  border-bottom:1px solid rgba(201,168,76,0.1);
+  font-size:1rem;color:var(--text);line-height:1.65;
+}
+.key-list li:last-child{border-bottom:none;}
+.key-list li::before{
+  content:'◈';color:var(--gold);
+  font-size:0.7rem;margin-top:0.35rem;flex-shrink:0;
+}
+
+/* 2-COL GRID */
+.grid-2{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:1.2rem;margin:1.5rem 0;
+}
+.card{
+  border:1px solid var(--border);
+  padding:1.4rem;
+  border-top:2px solid var(--gold);
+  background:var(--warm-white);
+}
+.card h4{
+  font-family:'Cinzel',serif;font-size:0.72rem;
+  letter-spacing:1.3px;text-transform:uppercase;
+  color:var(--deep-gold);margin-bottom:0.6rem;
+}
+.card p{font-size:0.92rem;color:var(--muted);line-height:1.65;margin:0;}
+
+/* 3-COL GRID */
+.grid-3{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1rem;margin:1.5rem 0;
+}
+.card-sm{
+  border:1px solid var(--border);padding:1rem;
+  background:var(--warm-white);text-align:center;
+}
+.card-sm .icon{font-size:1.6rem;margin-bottom:0.5rem;display:block;}
+.card-sm h5{
+  font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:1px;
+  text-transform:uppercase;color:var(--deep-gold);margin-bottom:0.3rem;
+}
+.card-sm p{font-size:0.82rem;color:var(--muted);margin:0;}
+
+/* NUMBERED STEPS */
+.steps{margin:1.5rem 0;}
+.step{
+  display:flex;gap:1.5rem;align-items:flex-start;
+  padding:1.2rem 0;
+  border-bottom:1px solid rgba(201,168,76,0.1);
+}
+.step:last-child{border-bottom:none;}
+.step-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.5rem;font-weight:300;
+  color:rgba(201,168,76,0.2);line-height:1;
+  flex-shrink:0;width:50px;text-align:center;
+}
+.step-body h4{
+  font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:1px;
+  text-transform:uppercase;color:var(--deep-gold);margin-bottom:0.4rem;
+}
+.step-body p{font-size:0.97rem;color:var(--text);margin:0;line-height:1.7;}
+
+/* RAGA TABLE */
+.raga-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem;}
+.raga-table th{
+  font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:1.5px;
+  text-transform:uppercase;color:var(--amber);
+  background:rgba(201,168,76,0.08);
+  padding:0.7rem 0.9rem;text-align:left;
+  border-bottom:1px solid var(--border);
+}
+.raga-table td{
+  padding:0.65rem 0.9rem;
+  border-bottom:1px solid rgba(201,168,76,0.08);
+  color:var(--text);vertical-align:top;
+  line-height:1.55;
+}
+.raga-table tr:hover td{background:rgba(201,168,76,0.04);}
+.raga-name{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-style:italic;color:var(--amber);}
+
+/* CALLOUT BOX */
+.callout{
+  padding:1.5rem 1.8rem;
+  background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(201,168,76,0.03));
+  border:1px solid rgba(201,168,76,0.3);
+  margin:2rem 0;border-radius:2px;
+}
+.callout-label{
+  font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:2.5px;
+  text-transform:uppercase;color:var(--amber);margin-bottom:0.6rem;display:block;
+}
+.callout p{font-size:1rem;color:var(--text);margin:0;line-height:1.75;}
+
+/* TIMELINE */
+.timeline{margin:1.5rem 0;}
+.tl-item{
+  display:flex;gap:1.5rem;
+  padding:1rem 0;
+  border-left:1px solid var(--border);
+  padding-left:1.5rem;
+  margin-left:0.5rem;
+  position:relative;
+}
+.tl-item::before{
+  content:'';
+  position:absolute;left:-4px;top:1.4rem;
+  width:7px;height:7px;border-radius:50%;
+  background:var(--gold);
+}
+.tl-year{
+  font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:1px;
+  color:var(--amber);min-width:110px;flex-shrink:0;
+  padding-top:0.15rem;
+}
+.tl-text h4{
+  font-family:'Cormorant Garamond',serif;font-size:1.1rem;
+  color:var(--text);margin-bottom:0.3rem;
+}
+.tl-text p{font-size:0.92rem;color:var(--muted);margin:0;line-height:1.6;}
+
+/* ROOT MAP BOX */
+.rootmap{
+  border:1px solid var(--border);
+  background:var(--warm-white);
+  padding:2rem;margin:2rem 0;
+}
+.rootmap-title{
+  font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:2px;
+  text-transform:uppercase;color:var(--amber);
+  border-bottom:1px solid var(--border);
+  padding-bottom:0.7rem;margin-bottom:1.5rem;
+}
+.rootmap-tree{font-size:0.88rem;color:var(--text);line-height:2;}
+.rootmap-tree .node-1{padding-left:0;font-family:'Cinzel',serif;font-size:0.75rem;color:var(--deep-gold);}
+.rootmap-tree .node-2{padding-left:1.5rem;color:var(--text);}
+.rootmap-tree .node-3{padding-left:3rem;color:var(--muted);font-size:0.85rem;}
+.rootmap-tree .node-4{padding-left:4.5rem;color:rgba(92,74,46,0.7);font-size:0.8rem;}
+
+/* SOURCE PILL */
+.source-ref{
+  display:inline-flex;align-items:center;gap:0.4rem;
+  font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:1px;
+  color:var(--amber);border:1px solid rgba(201,168,76,0.35);
+  padding:0.2rem 0.6rem;border-radius:2px;
+  text-decoration:none;transition:all 0.2s;
+  vertical-align:middle;margin:0 0.15rem;
+}
+.source-ref:hover{background:var(--gold);color:var(--dark);}
+.source-ref::before{content:'↗';font-size:0.6rem;}
+
+/* PAGE MARKER */
+.page-marker{
+  font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:2px;
+  color:rgba(201,168,76,0.4);text-align:right;
+  margin-bottom:0.3rem;text-transform:uppercase;
+}
+
+/* HIGHLIGHT BOX */
+.highlight{
+  background:linear-gradient(135deg,rgba(212,137,26,0.07),rgba(201,168,76,0.04));
+  border-left:3px solid var(--amber);
+  padding:1rem 1.4rem;margin:1.5rem 0;
+}
+.highlight p{font-size:0.97rem;color:var(--text);margin:0;line-height:1.7;}
+
+/* FREQUENCY / SHRUTI VISUAL */
+.shruti-row{
+  display:grid;grid-template-columns:repeat(12,1fr);
+  gap:3px;margin:1.5rem 0;
+}
+.shruti-cell{
+  text-align:center;padding:0.5rem 0.2rem;
+  background:rgba(201,168,76,0.08);
+  border:1px solid rgba(201,168,76,0.15);
+}
+.shruti-cell.active{background:rgba(201,168,76,0.25);border-color:var(--gold);}
+.shruti-cell .s-name{
+  font-family:'Cinzel',serif;font-size:0.55rem;color:var(--amber);
+  letter-spacing:0.5px;display:block;
+}
+.shruti-cell .s-num{
+  font-size:0.7rem;color:var(--muted);
+}
+
+/* MELAKARTA CHART */
+.mela-grid{
+  display:grid;grid-template-columns:repeat(6,1fr);
+  gap:2px;margin:1rem 0;
+}
+.mela-cell{
+  padding:0.35rem 0.2rem;text-align:center;
+  background:rgba(201,168,76,0.05);
+  border:1px solid rgba(201,168,76,0.12);
+  transition:background 0.2s;cursor:default;
+}
+.mela-cell:hover{background:rgba(201,168,76,0.18);}
+.mela-num{font-family:'Cinzel',serif;font-size:0.55rem;color:var(--amber);display:block;}
+.mela-name{font-size:0.72rem;color:var(--text);font-style:italic;}
+
+/* PRACTICE BOX */
+.practice-box{
+  border:1px solid var(--border);
+  margin:1.5rem 0;overflow:hidden;
+}
+.practice-header{
+  background:linear-gradient(135deg,var(--dark),var(--charcoal));
+  padding:1rem 1.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.practice-header h4{
+  font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:1.5px;
+  text-transform:uppercase;color:var(--gold);margin:0;
+}
+.practice-header .duration{
+  font-family:'Cinzel',serif;font-size:0.6rem;color:rgba(201,168,76,0.6);
+}
+.practice-body{padding:1.2rem 1.5rem;background:var(--warm-white);}
+.practice-body p{font-size:0.93rem;color:var(--text);margin-bottom:0.7rem;line-height:1.7;}
+.practice-body p:last-child{margin-bottom:0;}
+
+/* CHAKRA-RAGA MAP */
+.chakra-row{
+  display:flex;align-items:stretch;gap:0;
+  border:1px solid var(--border);margin:1rem 0;overflow:hidden;
+}
+.chakra-label{
+  background:linear-gradient(to bottom,var(--charcoal),var(--dark));
+  padding:0.8rem 1rem;min-width:130px;
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;text-align:center;
+}
+.chakra-name{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:1px;color:var(--gold);text-transform:uppercase;}
+.chakra-skt{font-family:'Cormorant Garamond',serif;font-size:1rem;color:rgba(253,250,243,0.5);font-style:italic;}
+.chakra-info{padding:0.8rem 1.2rem;flex:1;background:var(--warm-white);}
+.chakra-info .ragas{font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:var(--amber);margin-bottom:0.2rem;}
+.chakra-info .desc{font-size:0.87rem;color:var(--muted);line-height:1.55;}
+
+/* TRAINING PHASE */
+.phase-block{
+  margin:2rem 0;
+  border:1px solid var(--border);
+  overflow:hidden;
+}
+.phase-header{
+  padding:1.2rem 1.5rem;
+  display:flex;gap:1.2rem;align-items:center;
+}
+.phase-badge{
+  width:48px;height:48px;
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;
+  flex-shrink:0;
+}
+.phase-body{padding:0 1.5rem 1.5rem;}
+
+.phase-1 .phase-header{background:linear-gradient(135deg,rgba(46,58,139,0.1),rgba(46,58,139,0.04));}
+.phase-1 .phase-badge{background:rgba(46,58,139,0.15);color:#2E3A8B;border:1px solid rgba(46,58,139,0.3);}
+.phase-1 .phase-header h3{color:#2E3A8B;}
+
+.phase-2 .phase-header{background:linear-gradient(135deg,rgba(26,107,92,0.1),rgba(26,107,92,0.04));}
+.phase-2 .phase-badge{background:rgba(26,107,92,0.15);color:#1A6B5C;border:1px solid rgba(26,107,92,0.3);}
+.phase-2 .phase-header h3{color:#1A6B5C;}
+
+.phase-3 .phase-header{background:linear-gradient(135deg,rgba(201,168,76,0.12),rgba(201,168,76,0.04));}
+.phase-3 .phase-badge{background:rgba(201,168,76,0.15);color:var(--deep-gold);border:1px solid var(--border);}
+.phase-3 .phase-header h3{color:var(--deep-gold);}
+
+.phase-4 .phase-header{background:linear-gradient(135deg,rgba(139,26,46,0.1),rgba(139,26,46,0.04));}
+.phase-4 .phase-badge{background:rgba(139,26,46,0.15);color:#8B1A2E;border:1px solid rgba(139,26,46,0.3);}
+.phase-4 .phase-header h3{color:#8B1A2E;}
+
+.phase-5 .phase-header{background:linear-gradient(135deg,rgba(13,10,5,0.08),rgba(13,10,5,0.02));}
+.phase-5 .phase-badge{background:rgba(13,10,5,0.1);color:var(--text);border:1px solid rgba(13,10,5,0.2);}
+.phase-5 .phase-header h3{color:var(--text);}
+
+.phase-header h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;margin-bottom:0.2rem;}
+.phase-header .phase-dur{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:1px;color:var(--muted);}
+
+/* REFERENCES SECTION */
+.ref-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:1rem;margin:1.5rem 0;
+}
+.ref-item{
+  padding:0.8rem 1rem;
+  background:var(--warm-white);border:1px solid var(--border);
+}
+.ref-item a{
+  font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.8px;
+  color:var(--amber);text-decoration:none;display:block;margin-bottom:0.2rem;
+  word-break:break-all;
+  transition:color 0.2s;
+}
+.ref-item a:hover{color:var(--deep-gold);}
+.ref-item span{font-size:0.82rem;color:var(--muted);}
+
+/* FOOTER */
+footer{
+  border-top:1px solid var(--border);
+  padding:3rem 0;
+  margin-top:4rem;
+  text-align:center;
+}
+.footer-brand{
+  font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:3px;
+  color:var(--amber);text-transform:uppercase;margin-bottom:0.5rem;
+}
+.footer-sub{font-size:0.88rem;color:var(--muted);}
+.footer-link{
+  display:inline-block;margin-top:1.5rem;
+  font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:1.5px;
+  text-transform:uppercase;
+  color:var(--amber);text-decoration:none;
+  border:1px solid rgba(201,168,76,0.4);padding:0.6rem 1.5rem;
+  transition:all 0.2s;
+}
+.footer-link:hover{background:var(--gold);color:var(--dark);}
+
+/* RESPONSIVE */
+@media(max-width:700px){
+  .grid-2,.grid-3{grid-template-columns:1fr;}
+  .mela-grid{grid-template-columns:repeat(3,1fr);}
+  .shruti-row{grid-template-columns:repeat(6,1fr);}
+  .chakra-row{flex-direction:column;}
+  .ref-grid{grid-template-columns:1fr;}
+  main{padding-left:1.2rem;padding-right:1.2rem;}
+  .cover-title{font-size:3rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- Progress Bar -->
+<div id="progress-bar"></div>
+
+<!-- TOP NAR -->
+<nav id="topbar">
+  <a href="index.html" class="tb-brand">Cultural Musings</a>
+  <ul class="tb-nav">
+    <li><a href="#part-1">Origins</a></li>
+    <li><a href="#part-2">Evolution</a></li>
+    <li><a href="#part-3">Analysis</a></li>
+    <li><a href="#part-4">Types</a></li>
+    <li><a href="#part-5">Existence</a></li>
+    <li><a href="#part-6">Training</a></li>
+  </ul>
+  <a href="index.html" class="tb-back no-print">← Back to Main Site</a>
+</nav>
+
+<!-- TOC Sidebar -->
+<button id="toc-toggle" onclick="toggleTOC()" title="Table of Contents">☰</button>
+<div id="toc-backdrop" onclick="closeTOC()"></div>
+<div id="toc-sidebar">
+  <div class="toc-header">Contents — 44 Pages</div>
+
+  <div class="toc-part">Part I — Origins</div>
+  <a href="#cover" class="toc-link">Cover & Introduction</a>
+  <a href="#sec-cosmic" class="toc-link">Cosmic Foundations of Sound</a>
+  <a href="#sec-vedic" class="toc-link">The Vedic Acoustic Framework</a>
+  <a href="#sec-nada" class="toc-link">Nada Brahman — Sound as Reality</a>
+  <a href="#sec-saptaswaras" class="toc-link">The Seven Swaras</a>
+  <a href="#sec-shruti" class="toc-link">The 22 Shrutis</a>
+
+  <div class="toc-part">Part II — Evolution</div>
+  <a href="#sec-birth" class="toc-link">Birth of the Raga Concept</a>
+  <a href="#sec-texts" class="toc-link">Primary Source Texts</a>
+  <a href="#sec-timeline" class="toc-link">Historical Timeline</a>
+  <a href="#sec-traditions" class="toc-link">Two Great Traditions</a>
+  <a href="#sec-melakarta" class="toc-link">The 72 Melakarta System</a>
+  <a href="#sec-janya" class="toc-link">Janya Ragas</a>
+  <a href="#sec-hindustani" class="toc-link">Hindustani Classification</a>
+  <a href="#sec-84ragas" class="toc-link">The 84 Ragas</a>
+
+  <div class="toc-part">Part III — Analysis</div>
+  <a href="#sec-anatomy" class="toc-link">Anatomy of a Raga</a>
+  <a href="#sec-grammar" class="toc-link">Raga Grammar & Rules</a>
+  <a href="#sec-analysis" class="toc-link">How to Analyze a Raga</a>
+  <a href="#sec-pharmacopoeia" class="toc-link">The Raga Pharmacopoeia</a>
+  <a href="#sec-time" class="toc-link">Time & Season</a>
+  <a href="#sec-rasa" class="toc-link">Rasa — The Emotional Science</a>
+  <a href="#sec-neuro" class="toc-link">Neurological Evidence</a>
+  <a href="#sec-coexist" class="toc-link">Raga Coexistence</a>
+
+  <div class="toc-part">Part IV — Types</div>
+  <a href="#sec-types" class="toc-link">Classification Systems</a>
+  <a href="#sec-categories" class="toc-link">Major Raga Categories</a>
+  <a href="#sec-rootmap" class="toc-link">The Root Map</a>
+
+  <div class="toc-part">Part V — Existence</div>
+  <a href="#sec-why" class="toc-link">Why Music Must Exist</a>
+  <a href="#sec-healing" class="toc-link">Music as Medicine</a>
+  <a href="#sec-chakra" class="toc-link">Ragas & Chakra System</a>
+  <a href="#sec-karana" class="toc-link">Raga–Karana–Nakshatra Axis</a>
+  <a href="#sec-contemporary" class="toc-link">Modern Scientific Evidence</a>
+  <a href="#sec-society" class="toc-link">Music in Society</a>
+
+  <div class="toc-part">Part VI — Training</div>
+  <a href="#sec-learn" class="toc-link">Learning Perspective</a>
+  <a href="#sec-meditate" class="toc-link">Meditative Perspective</a>
+  <a href="#sec-bodymind" class="toc-link">Body–Mind–Soul Integration</a>
+  <a href="#sec-practices" class="toc-link">Core Practice Framework</a>
+  <a href="#sec-sadhana" class="toc-link">Daily Sadhana — 44 Practices</a>
+  <a href="#sec-references" class="toc-link">References & Sources</a>
+</div>
+
+<!-- ══════════════════════════════
+     MAIN CONTENT
+══════════════════════════════ -->
+<main>
+
+<!-- ═══════════════════════════════════════
+     COVER PAGE
+═══════════════════════════════════════ -->
+<section class="cover-section" id="cover">
+  <svg class="cover-mandala" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="200" cy="200" r="190" stroke="#C9A84C" stroke-width="0.5"/>
+    <circle cx="200" cy="200" r="155" stroke="#C9A84C" stroke-width="0.4"/>
+    <circle cx="200" cy="200" r="120" stroke="#C9A84C" stroke-width="0.4"/>
+    <circle cx="200" cy="200" r="85"  stroke="#C9A84C" stroke-width="0.4"/>
+    <circle cx="200" cy="200" r="50"  stroke="#C9A84C" stroke-width="0.4"/>
+    <circle cx="200" cy="200" r="18"  stroke="#C9A84C" stroke-width="0.5"/>
+    <line x1="10"  y1="200" x2="390" y2="200" stroke="#C9A84C" stroke-width="0.3"/>
+    <line x1="200" y1="10"  x2="200" y2="390" stroke="#C9A84C" stroke-width="0.3"/>
+    <line x1="66"  y1="66"  x2="334" y2="334" stroke="#C9A84C" stroke-width="0.3"/>
+    <line x1="334" y1="66"  x2="66"  y2="334" stroke="#C9A84C" stroke-width="0.3"/>
+    <polygon points="200,20 373,310 27,310" stroke="#C9A84C" stroke-width="0.4" fill="none"/>
+    <polygon points="200,380 27,90 373,90" stroke="#C9A84C" stroke-width="0.4" fill="none"/>
+    <polygon points="200,10 390,200 200,390 10,200" stroke="#C9A84C" stroke-width="0.3" fill="none"/>
+    <circle cx="200" cy="200" r="5" fill="#C9A84C" opacity="0.6"/>
+  </svg>
+
+  <div class="cover-eyebrow">Naredla Rama Chandra · Cultural Musings</div>
+  <h1 class="cover-title">Raga Vidyā</h1>
+  <div class="cover-title-skt">राग विद्या</div>
+  <p class="cover-subtitle">
+    The Complete Science of Indian Classical Music — Origins, Evolution, Analysis, Types, Therapeutic Application, and the Complete Training Pathway for Body, Mind and Soul Integration
+  </p>
+  <div class="cover-divider"></div>
+  <div class="cover-meta">
+    <div class="cover-meta-item"><span class="cover-meta-num">44</span><div class="cover-meta-label">Pages</div></div>
+    <div class="cover-meta-item"><span class="cover-meta-num">72</span><div class="cover-meta-label">Melakarthas</div></div>
+    <div class="cover-meta-item"><span class="cover-meta-num">1000+</span><div class="cover-meta-label">Ragas Documented</div></div>
+    <div class="cover-meta-item"><span class="cover-meta-num">22</span><div class="cover-meta-label">Shrutis</div></div>
+    <div class="cover-meta-item"><span class="cover-meta-num">6</span><div class="cover-meta-label">Training Paths</div></div>
+  </div>
+  <div class="cover-tags">
+    <span class="cover-tag">Carnatic</span>
+    <span class="cover-tag">Hindustani</span>
+    <span class="cover-tag">Nada Chikitsa</span>
+    <span class="cover-tag">108 Karanas</span>
+    <span class="cover-tag">Vedic Acoustics</span>
+    <span class="cover-tag">Bio-Acoustics</span>
+    <span class="cover-tag">Consciousness</span>
+  </div>
+  <div class="scroll-invite">Begin</div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     PART I — ORIGINS & COSMIC FOUNDATIONS
+═══════════════════════════════════════ -->
+<div class="part-header" id="part-1">
+  <div class="part-num">I</div>
+  <div class="part-eyebrow">Part One · Pages 1–6</div>
+  <h2 class="part-title">Origins &amp; Cosmic<br><em>Foundations</em></h2>
+  <p class="part-intro">Sound is not the product of instruments or voices. In the Vedic understanding, sound is the primordial substrate of reality itself — the first principle from which all existence emerges. To understand a Raga, we must begin here.</p>
+</div>
+
+<!-- Page 1 -->
+<div class="page-marker">Page 1</div>
+<section class="section" id="sec-cosmic">
+  <h2 class="section-h">The <em>Cosmic Foundation</em> of Sound</h2>
+  <p>In the beginning, according to every major Vedic cosmological text, there was not silence — there was vibration. The Taittirīya Upaniṣad declares that from the Self arose Ākāśa (space), and from Ākāśa arose Vāyu (air), and from Vāyu arose sound. Sound is therefore the first differentiated phenomenon to emerge from undifferentiated consciousness — a position that modern quantum field theory, independently, is now approaching through its understanding of the quantum vacuum as a seething ground of virtual fluctuations.</p>
+
+  <div class="skt-block">
+    <div class="skt-text">ओम् — नादो ब्रह्म इति विद्यात्</div>
+    <div class="skt-trans">"OM — Know that Nāda (sound) is Brahman (universal consciousness)"</div>
+    <div class="skt-source">Nārada Purāṇa · Chapter 12 — <a href="https://www.kamakoti.org/kamakoti/details/naradapurana12.html" class="source-ref" target="_blank">kamakoti.org</a></div>
+  </div>
+
+  <p>This declaration — Nādo Brahma — is not a poetic metaphor. It is the foundational proposition of a complete science. It states that the deepest nature of reality is acoustic: that what we perceive as matter is a derivative of sound-like vibration at the quantum level; that the human nervous system is a resonant instrument calibrated to specific cosmic frequencies; and that health, disease, consciousness, and liberation are all ultimately matters of acoustic coherence or dissonance.</p>
+
+  <div class="pull">
+    <p>"The ancients were not primitive people who heard thunder and imagined a god. They were systematic investigators who, over millennia of sustained inquiry, arrived at the conclusion that the universe is fundamentally vibrational — a conclusion that quantum field theory is reaching from the opposite direction."</p>
+    <cite>— Naredla Rama Chandra, Cultural Musings</cite>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h4>Āhata Nāda — Struck Sound</h4>
+      <p>The sound produced by two objects striking each other — all music, language, and environmental sound falls into this category. This is the domain of classical music: organised Āhata Nāda with therapeutic intent.</p>
+    </div>
+    <div class="card">
+      <h4>Anāhata Nāda — Unstruck Sound</h4>
+      <p>The primordial cosmic vibration that exists without any physical causation — the OM of the quantum vacuum. Advanced meditators report direct auditory experience of this sound. The fourth Chakra (heart) is named Anāhata because it is the centre of cosmic resonance in the body.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Page 2 -->
+<div class="page-marker">Page 2</div>
+<section class="section" id="sec-vedic">
+  <h2 class="section-h">The <em>Vedic Acoustic Framework</em></h2>
+  <p>The Vedas constitute humanity's oldest and most complete acoustic science. The Sāmaveda — the second Veda — is specifically dedicated to sung recitation and is the direct textual ancestor of Indian classical music. Its 1,875 mantras are not merely religious texts but precise acoustic formulas, each specifying the correct frequency, duration, and ornamental inflection of every syllable. <a href="https://vedicheritage.gov.in/introduction/" class="source-ref" target="_blank">Vedic Heritage Portal</a></p>
+
+  <div class="grid-3">
+    <div class="card-sm">
+      <span class="icon">📜</span>
+      <h5>Ṛgveda</h5>
+      <p>The Veda of hymns — 10,552 mantras in specific acoustic patterns. The oldest layer of Sanskrit. Source of Sāma melodies.</p>
+    </div>
+    <div class="card-sm">
+      <span class="icon">🎵</span>
+      <h5>Sāmaveda</h5>
+      <p>The Veda of melody — direct progenitor of Indian music. Defines the seven Svaras. <a href="https://veda.harekrsna.cz/encyclopedia/scriptures.htm" class="source-ref" target="_blank">Reference</a></p>
+    </div>
+    <div class="card-sm">
+      <span class="icon">⚗️</span>
+      <h5>Yajurveda</h5>
+      <p>The Veda of ritual action — encodes the relationship between sound, movement, and cosmic geometry.</p>
+    </div>
+    <div class="card-sm">
+      <span class="icon">🌿</span>
+      <h5>Atharvaveda</h5>
+      <p>The Veda of healing — contains the earliest documented sound-healing protocols using mantra as medicine.</p>
+    </div>
+    <div class="card-sm">
+      <span class="icon">🎼</span>
+      <h5>Gandharva Veda</h5>
+      <p>The Upaveda (subsidiary science) dedicated entirely to music — the most direct scriptural ancestor of Raga science.</p>
+    </div>
+    <div class="card-sm">
+      <span class="icon">🔬</span>
+      <h5>Śikṣā (Phonetics)</h5>
+      <p>The Vedāṅga (limb of the Veda) dedicated to the precise science of sound production — the world's first phonetics treatise.</p>
+    </div>
+  </div>
+
+  <h3 class="sub-h">The Sāma Gāna — The Original Music</h3>
+  <p>The original chanting of the Sāmaveda — Sāma Gāna — is arguably the oldest continuous musical tradition in human history. Its melodies (Sāmas) were not composed arbitrarily but derived from the intrinsic acoustic properties of the Sanskrit syllables being sung. This means the melodic intervals of early Indian music were mathematically determined by the structure of the language itself — giving Vedic music a formal precision that no other musical tradition can claim. <a href="https://www.veducation.world/library" class="source-ref" target="_blank">veducation.world</a></p>
+</section>
+
+<!-- Page 3 -->
+<div class="page-marker">Page 3</div>
+<section class="section" id="sec-nada">
+  <h2 class="section-h">Nāda Brahman — <em>Sound as the Substrate of Reality</em></h2>
+  <p>The doctrine of Nāda Brahman — that sound is the primary manifestation of universal consciousness — is not confined to any single Vedic text. It pervades the entire tradition from the Upaniṣads through the Purāṇas, through Śaṅkarācārya's Advaita philosophy, through Kashmir Śaivism's Spanda doctrine, to the practical science of Raga therapy. <a href="https://hindupedia.com/en/Veda" class="source-ref" target="_blank">Hindupedia</a></p>
+
+  <div class="skt-block">
+    <div class="skt-text">सर्वं खल्विदं ब्रह्म — तज्जलानिति शान्त उपासीत</div>
+    <div class="skt-trans">"All this is indeed Brahman — it emerges from Brahman, returns to Brahman, breathes in Brahman. Meditate on this with tranquility."</div>
+    <div class="skt-source">Chāndogya Upaniṣad 3.14.1</div>
+  </div>
+
+  <p>Śaṅkarācārya — whose complete works in 20 Sanskrit volumes represent the most rigorous systematic exposition of Advaita Vedānta <a href="https://hinduebooks.blogspot.com/2010/08/works-of-sri-sankaracharya-sanskrit-20.html" class="source-ref" target="_blank">Complete Works</a> <a href="https://archive.org/details/CompleteWorksOfSriSankaracharyaIn20Volumes1910Edition" class="source-ref" target="_blank">Archive.org</a> — identifies Nāda as the primary vehicle through which the undifferentiated Brahman becomes differentiated creation. The vowels and consonants of the Sanskrit alphabet are not arbitrary phonetic conventions but the 50 seed syllables (Bīja Akṣaras) that constitute the acoustic architecture of reality itself. <a href="https://ramanisblog.in/2015/08/02/shankar-mutts-by-shankaracharya-four-vedas/" class="source-ref" target="_blank">Shankar Mutts</a></p>
+
+  <div class="callout">
+    <span class="callout-label">The Spanda Connection</span>
+    <p>Kashmir Śaivism's Spanda doctrine — the concept that consciousness is inherently vibrational, always pulsing between self-concealment and self-revelation — provides the most philosophically sophisticated framework for Nāda Brahman. Every Raga, in this view, is a structured modulation of the primordial Spanda — a specific way of tuning the nervous system to resonate with a specific frequency of consciousness.</p>
+  </div>
+
+  <h3 class="sub-h">The Four Levels of Sound (Vāk)</h3>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body"><h4>Parā Vāk — Transcendent Sound</h4><p>The unmanifest sound that exists in pure consciousness before any differentiation — equivalent to the quantum vacuum's ground state. Accessible only in deep Samādhi.</p></div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body"><h4>Paśyantī Vāk — Visionary Sound</h4><p>Sound as it exists in the causal plane — pure intention before it takes form. The level at which Rishis "heard" (śruti) the Vedas: not composed, but perceived from the acoustic structure of reality itself.</p></div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body"><h4>Madhyamā Vāk — Middle Sound</h4><p>Sound at the mental-energetic level — the inner hearing of musical phrases before they are physically produced. Advanced musicians operate at this level; they hear the Raga internally before sounding it.</p></div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-body"><h4>Vaikharī Vāk — Expressed Sound</h4><p>The physically audible sound — the level of actual musical performance. All Raga theory operates at this level, but its power derives from its alignment with the three subtler levels above.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 4 -->
+<div class="page-marker">Page 4</div>
+<section class="section" id="sec-saptaswaras">
+  <h2 class="section-h">The Seven Swaras — <em>The Sonic Alphabet of Creation</em></h2>
+  <p>The Sapta Swaras — the seven notes of Indian classical music — are not arbitrary conventions like the Western do-re-mi. They are derived from the natural harmonic series and carry specific etymological, physiological, and cosmic meanings encoded in their Sanskrit names. Each Swara is the sound of a specific animal in nature, associated with a specific Vedic text, a specific time of day, and a specific psychological and physiological state.</p>
+
+  <table class="raga-table">
+    <thead>
+      <tr><th>Svara</th><th>Sanskrit</th><th>Note (Western)</th><th>Animal Sound</th><th>Physiological Effect</th><th>Vedic Association</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><span class="raga-name">Ṣaḍja (Sa)</span></td><td>षड्ज — born of six</td><td>Do (C)</td><td>Peacock</td><td>Grounding, stability, root chakra activation</td><td>Ṛgveda — Earth quarter</td></tr>
+      <tr><td><span class="raga-name">Ṛṣabha (Re)</span></td><td>ऋषभ — bull</td><td>Re (D)</td><td>Bull/Skylark</td><td>Courage, vitality, second chakra</td><td>Sāmaveda — Water quarter</td></tr>
+      <tr><td><span class="raga-name">Gāndhāra (Ga)</span></td><td>गान्धार — scent-bearing</td><td>Mi (E)</td><td>Goat</td><td>Emotional warmth, solar plexus</td><td>Yajurveda — Air quarter</td></tr>
+      <tr><td><span class="raga-name">Madhyama (Ma)</span></td><td>मध्यम — the middle</td><td>Fa (F)</td><td>Heron</td><td>Balance, heart chakra — pivot note</td><td>Atharvaveda — Ether quarter</td></tr>
+      <tr><td><span class="raga-name">Pañcama (Pa)</span></td><td>पञ्चम — the fifth</td><td>Sol (G)</td><td>Cuckoo</td><td>Throat resonance, communication</td><td>All four Vedas — cosmic constant</td></tr>
+      <tr><td><span class="raga-name">Dhaivata (Dha)</span></td><td>धैवत — lord-like</td><td>La (A)</td><td>Horse/Frog</td><td>Third eye activation, vision</td><td>Gandharva Veda</td></tr>
+      <tr><td><span class="raga-name">Niṣāda (Ni)</span></td><td>निषाद — sitting below</td><td>Ti (B)</td><td>Elephant</td><td>Crown chakra, dissolution, transcendence</td><td>Atharva/Sāma fusion</td></tr>
+    </tbody>
+  </table>
+
+  <div class="highlight">
+    <p><strong>Sa and Pa are the two immovable notes (Acala Svaras)</strong> — they are never altered in any Raga. Sa (the tonic) is the ground; Pa (the fifth) is its perfect resonant companion. All other five Svaras can appear in natural (Śuddha), raised (Tīvra), or lowered (Komal) forms — producing the richness of the Raga system.</p>
+  </div>
+</section>
+
+<!-- Page 5-6 -->
+<div class="page-marker">Pages 5–6</div>
+<section class="section" id="sec-shruti">
+  <h2 class="section-h">The 22 Śrutis — <em>The Microtonal Architecture</em></h2>
+  <p>Between and within the seven Svaras, the Vedic acoustic science identifies 22 Śrutis — microtonal intervals derived from the natural harmonic series. These are not the equal-tempered semitones of Western music. They are precise mathematical ratios derived from the overtone relationships in natural sound. The 22 Śrutis are the true building blocks of the Raga system — each Raga uses specific Śrutis to produce its characteristic emotional and physiological effect. <a href="https://ragamath.com/" class="source-ref" target="_blank">RagaMath.com</a></p>
+
+  <div class="shruti-row">
+    <div class="shruti-cell active"><span class="s-name">Sa</span><span class="s-num">1</span></div>
+    <div class="shruti-cell"><span class="s-name">Re₁</span><span class="s-num">2</span></div>
+    <div class="shruti-cell active"><span class="s-name">Re₂</span><span class="s-num">3</span></div>
+    <div class="shruti-cell active"><span class="s-name">Ga₁</span><span class="s-num">4</span></div>
+    <div class="shruti-cell"><span class="s-name">Ga₂</span><span class="s-num">5</span></div>
+    <div class="shruti-cell active"><span class="s-name">Ga₃</span><span class="s-num">6</span></div>
+    <div class="shruti-cell active"><span class="s-name">Ma₁</span><span class="s-num">7</span></div>
+    <div class="shruti-cell"><span class="s-name">Ma₂</span><span class="s-num">8</span></div>
+    <div class="shruti-cell active"><span class="s-name">Pa</span><span class="s-num">9</span></div>
+    <div class="shruti-cell"><span class="s-name">Dha₁</span><span class="s-num">10</span></div>
+    <div class="shruti-cell active"><span class="s-name">Ni₁</span><span class="s-num">11</span></div>
+    <div class="shruti-cell active"><span class="s-name">Ni₂</span><span class="s-num">12</span></div>
+  </div>
+  <p style="font-size:0.82rem;color:var(--muted);text-align:center;margin-top:0.3rem;">Highlighted cells = Śuddha (natural) positions · The 22 Śrutis span the entire octave with mathematically precise microtonal intervals</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <h4>Mathematical Derivation</h4>
+      <p>The 22 Śrutis are derived from three types of natural harmonic relationships: Dīrgha (2:1 ratio — octave), Bṛhat (3:2 — perfect fifth), and Laghu (9:8 — major second). Their combination generates all 22 positions within the octave as pure integer ratios — a system of just intonation far more acoustically coherent than equal temperament.</p>
+    </div>
+    <div class="card">
+      <h4>Physiological Significance</h4>
+      <p>Each Śruti produces a measurably different effect on the autonomic nervous system. The specific Śruti positions used in a Raga are not aesthetic choices — they are acoustic prescriptions. Choosing the Tīvra (sharp) form of Ga versus the Komal (flat) form activates different neural pathways and produces different hormonal responses. <a href="https://chromatone.center/theory/scales/raga" class="source-ref" target="_blank">Chromatone</a></p>
+    </div>
+  </div>
+
+  <div class="ornament">◈ ◈ ◈</div>
+
+  <div class="callout">
+    <span class="callout-label">The 22 Śrutis & the 22 Karana Classes</span>
+    <p>One of the most mathematically striking discoveries in the Cultural Musings research archive: the 22 Śrutis of Indian music correspond precisely to the 22 classes of Karana movement identified in the Natya Shastra. Sound and sacred movement are literally the same mathematics expressed in two different media — a finding central to the Complete Celestial Synthesis research at <strong>completecelestialsynthesis.culturalmusings.com</strong>.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     PART II — EVOLUTION & CLASSIFICATION
+═══════════════════════════════════════ -->
+<div class="part-header page-break" id="part-2">
+  <div class="part-num">II</div>
+  <div class="part-eyebrow">Part Two · Pages 7–14</div>
+  <h2 class="part-title">Evolution &amp; <em>Classification</em></h2>
+  <p class="part-intro">From the cosmic framework of the Sāmaveda to the towering mathematical edifice of the 72 Melakarthas, the Raga system evolved over three millennia through an unbroken chain of scholar-practitioners whose rigour exceeded that of any contemporary academic institution.</p>
+</div>
+
+<!-- Page 7 -->
+<div class="page-marker">Page 7</div>
+<section class="section" id="sec-birth">
+  <h2 class="section-h">The Birth of the <em>Raga Concept</em></h2>
+  <p>The word Rāga derives from the Sanskrit root √rañj — "to colour, to dye, to be moved by." A Raga is literally "that which colours the mind." This etymology is precise and scientific: each Raga produces a specific neurochemical colouring of the mental-emotional state, as measurable by EEG, fMRI, and endocrine markers as the effect of any pharmaceutical compound.</p>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-year">c. 1500 BCE</div>
+      <div class="tl-text"><h4>Sāmaveda Gāna</h4><p>The earliest documented melodic system — specific intervals (Grāmas) codified for ritual recitation. The acoustic foundation of all Raga science.</p></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">c. 200 BCE–200 CE</div>
+      <div class="tl-text"><h4>Natya Shastra — Bharata Muni</h4><p>The first comprehensive music theory treatise. Defines Jātis (modal species), Grāmas (tonal systems), Mūrchanās (modal scales). The term "Rāga" not yet formalised but all conceptual elements present. <a href="https://www.exoticindiaart.com/article/the-108-poses-of-shiva-tandava-in-natya-shastra" class="source-ref" target="_blank">Exotic India</a></p></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">c. 9th century CE</div>
+      <div class="tl-text"><h4>Bṛhaddeśī — Mataṅga Muni</h4><p>First text to use the word "Rāga" in its full technical sense. Defines Raga as a tonal configuration that delights the mind through specific notes, ornaments, and movements. The pivot text of Raga history.</p></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">13th century CE</div>
+      <div class="tl-text"><h4>Saṃgīta Ratnākara — Śārṅgadeva</h4><p>The most comprehensive Sanskrit music treatise ever written. Seven chapters covering scale theory, Raga classification, rhythm, dance, and instruments. Still the primary reference for classical music scholarship.</p></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">1620 CE</div>
+      <div class="tl-text"><h4>Caturdaṇḍiprakāśikā — Venkatamakhi</h4><p>The foundational text of the 72 Melakarta system — the definitive mathematical classification of all possible parent scales within the octave. A masterwork of applied combinatorial mathematics. <a href="https://melakarta.com/" class="source-ref" target="_blank">melakarta.com</a></p></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">19th–20th century</div>
+      <div class="tl-text"><h4>Consolidation & Documentation</h4><p>Thyāgarāja, Muttusvāmi Dīkṣitar, and Śyāmā Śāstri (the Trinity of Carnatic music) compose thousands of kriti in specific Ragas, cementing the living Raga tradition. Simultaneous Hindustani codification by Vishnu Narayan Bhatkhande. <a href="https://ragajunglism.org/ragas" class="source-ref" target="_blank">Raga Junglism</a></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 8-9 -->
+<div class="page-marker">Pages 8–9</div>
+<section class="section" id="sec-melakarta">
+  <h2 class="section-h">The 72 Melakarta System — <em>The Mathematical Masterwork</em></h2>
+  <p>The Melakarta system is one of the greatest intellectual achievements in the history of music. Venkatamakhi's insight: if you take the 12 semitones of the octave and apply specific rules about which combinations constitute a "valid" parent scale (Melakartha), you arrive at exactly 72 possible parent Ragas — no more, no less. This is a theorem, not an aesthetic choice. The mathematics is formal and exhaustive. <a href="https://melakarta.com/" class="source-ref" target="_blank">Melakarta.com</a></p>
+
+  <div class="grid-2">
+    <div class="card">
+      <h4>The Mathematical Structure</h4>
+      <p>The lower tetrachord (Sa to Pa) has 6 possible configurations × the upper tetrachord (Pa to upper Sa) has 6 possible configurations × Ma natural (Ma1) or Ma augmented (Ma2) = 6 × 6 × 2 = <strong>72</strong>. A perfect combinatorial grid. <a href="https://ragamath.com/" class="source-ref" target="_blank">RagaMath</a></p>
+    </div>
+    <div class="card">
+      <h4>The 12 Chakras</h4>
+      <p>The 72 Melakarthas are grouped into 12 Chakras (cycles) of 6 Ragas each. Each Chakra is named after a solar deity — encoding an astronomical-musical correspondence. Chakras 1–6 use Ma1; Chakras 7–12 use Ma2.</p>
+    </div>
+  </div>
+
+  <h3 class="sub-h">The 72 Melakarthas — Complete Grid (Ragas 1–72)</h3>
+  <div class="mela-grid">
+    <div class="mela-cell"><span class="mela-num">1</span><span class="mela-name">Kanakangi</span></div>
+    <div class="mela-cell"><span class="mela-num">2</span><span class="mela-name">Ratnangi</span></div>
+    <div class="mela-cell"><span class="mela-num">3</span><span class="mela-name">Ganamurti</span></div>
+    <div class="mela-cell"><span class="mela-num">4</span><span class="mela-name">Vanaspati</span></div>
+    <div class="mela-cell"><span class="mela-num">5</span><span class="mela-name">Manavati</span></div>
+    <div class="mela-cell"><span class="mela-num">6</span><span class="mela-name">Tanarupi</span></div>
+    <div class="mela-cell"><span class="mela-num">7</span><span class="mela-name">Senavati</span></div>
+    <div class="mela-cell"><span class="mela-num">8</span><span class="mela-name">Hanumatodi</span></div>
+    <div class="mela-cell"><span class="mela-num">9</span><span class="mela-name">Dhenuka</span></div>
+    <div class="mela-cell"><span class="mela-num">10</span><span class="mela-name">Natakapriya</span></div>
+    <div class="mela-cell"><span class="mela-num">11</span><span class="mela-name">Kokilapriya</span></div>
+    <div class="mela-cell"><span class="mela-num">12</span><span class="mela-name">Rupavati</span></div>
+    <div class="mela-cell"><span class="mela-num">13</span><span class="mela-name">Gayakapriya</span></div>
+    <div class="mela-cell"><span class="mela-num">14</span><span class="mela-name">Vakulabharanam</span></div>
+    <div class="mela-cell"><span class="mela-num">15</span><span class="mela-name">Mayamalavagowla</span></div>
+    <div class="mela-cell"><span class="mela-num">16</span><span class="mela-name">Chakravakam</span></div>
+    <div class="mela-cell"><span class="mela-num">17</span><span class="mela-name">Suryakantam</span></div>
+    <div class="mela-cell"><span class="mela-num">18</span><span class="mela-name">Hatakambari</span></div>
+    <div class="mela-cell"><span class="mela-num">19</span><span class="mela-name">Jhankaradhwani</span></div>
+    <div class="mela-cell"><span class="mela-num">20</span><span class="mela-name">Natabhairavi</span></div>
+    <div class="mela-cell"><span class="mela-num">21</span><span class="mela-name">Keeravani</span></div>
+    <div class="mela-cell"><span class="mela-num">22</span><span class="mela-name">Kharaharapriya</span></div>
+    <div class="mela-cell"><span class="mela-num">23</span><span class="mela-name">Gowrimanohari</span></div>
+    <div class="mela-cell"><span class="mela-num">24</span><span class="mela-name">Varunapriya</span></div>
+    <div class="mela-cell"><span class="mela-num">25</span><span class="mela-name">Mararanjani</span></div>
+    <div class="mela-cell"><span class="mela-num">26</span><span class="mela-name">Charukesi</span></div>
+    <div class="mela-cell"><span class="mela-num">27</span><span class="mela-name">Sarasangi</span></div>
+    <div class="mela-cell"><span class="mela-num">28</span><span class="mela-name">Harikambhoji</span></div>
+    <div class="mela-cell"><span class="mela-num">29</span><span class="mela-name">Dheerasankarabharanam</span></div>
+    <div class="mela-cell"><span class="mela-num">30</span><span class="mela-name">Naganandini</span></div>
+    <div class="mela-cell"><span class="mela-num">31</span><span class="mela-name">Yagapriya</span></div>
+    <div class="mela-cell"><span class="mela-num">32</span><span class="mela-name">Ragavardhini</span></div>
+    <div class="mela-cell"><span class="mela-num">33</span><span class="mela-name">Gangeyabhushani</span></div>
+    <div class="mela-cell"><span class="mela-num">34</span><span class="mela-name">Vagadheeswari</span></div>
+    <div class="mela-cell"><span class="mela-num">35</span><span class="mela-name">Shulini</span></div>
+    <div class="mela-cell"><span class="mela-num">36</span><span class="mela-name">Chalanata</span></div>
+    <div class="mela-cell"><span class="mela-num">37</span><span class="mela-name">Salagam</span></div>
+    <div class="mela-cell"><span class="mela-num">38</span><span class="mela-name">Jalarnavam</span></div>
+    <div class="mela-cell"><span class="mela-num">39</span><span class="mela-name">Jhalavarali</span></div>
+    <div class="mela-cell"><span class="mela-num">40</span><span class="mela-name">Navanitam</span></div>
+    <div class="mela-cell"><span class="mela-num">41</span><span class="mela-name">Pavani</span></div>
+    <div class="mela-cell"><span class="mela-num">42</span><span class="mela-name">Raghupriya</span></div>
+    <div class="mela-cell"><span class="mela-num">43</span><span class="mela-name">Gavambodhi</span></div>
+    <div class="mela-cell"><span class="mela-num">44</span><span class="mela-name">Bhavapriya</span></div>
+    <div class="mela-cell"><span class="mela-num">45</span><span class="mela-name">Shubhapantuvarali</span></div>
+    <div class="mela-cell"><span class="mela-num">46</span><span class="mela-name">Shadvidamargini</span></div>
+    <div class="mela-cell"><span class="mela-num">47</span><span class="mela-name">Suvarnangi</span></div>
+    <div class="mela-cell"><span class="mela-num">48</span><span class="mela-name">Divyamani</span></div>
+    <div class="mela-cell"><span class="mela-num">49</span><span class="mela-name">Dhavalambari</span></div>
+    <div class="mela-cell"><span class="mela-num">50</span><span class="mela-name">Namanarayani</span></div>
+    <div class="mela-cell"><span class="mela-num">51</span><span class="mela-name">Kamavardhini</span></div>
+    <div class="mela-cell"><span class="mela-num">52</span><span class="mela-name">Ramapriya</span></div>
+    <div class="mela-cell"><span class="mela-num">53</span><span class="mela-name">Gamanashrama</span></div>
+    <div class="mela-cell"><span class="mela-num">54</span><span class="mela-name">Vishwambhari</span></div>
+    <div class="mela-cell"><span class="mela-num">55</span><span class="mela-name">Shamalangi</span></div>
+    <div class="mela-cell"><span class="mela-num">56</span><span class="mela-name">Shanmukhapriya</span></div>
+    <div class="mela-cell"><span class="mela-num">57</span><span class="mela-name">Simhendramadhyamam</span></div>
+    <div class="mela-cell"><span class="mela-num">58</span><span class="mela-name">Hemavati</span></div>
+    <div class="mela-cell"><span class="mela-num">59</span><span class="mela-name">Dharmavati</span></div>
+    <div class="mela-cell"><span class="mela-num">60</span><span class="mela-name">Neetimati</span></div>
+    <div class="mela-cell"><span class="mela-num">61</span><span class="mela-name">Kantamani</span></div>
+    <div class="mela-cell"><span class="mela-num">62</span><span class="mela-name">Rishabhapriya</span></div>
+    <div class="mela-cell"><span class="mela-num">63</span><span class="mela-name">Latangi</span></div>
+    <div class="mela-cell"><span class="mela-num">64</span><span class="mela-name">Vachaspati</span></div>
+    <div class="mela-cell"><span class="mela-num">65</span><span class="mela-name">Mechakalyani</span></div>
+    <div class="mela-cell"><span class="mela-num">66</span><span class="mela-name">Chitrambari</span></div>
+    <div class="mela-cell"><span class="mela-num">67</span><span class="mela-name">Sucharitra</span></div>
+    <div class="mela-cell"><span class="mela-num">68</span><span class="mela-name">Jyotiswarupini</span></div>
+    <div class="mela-cell"><span class="mela-num">69</span><span class="mela-name">Dhatuvardani</span></div>
+    <div class="mela-cell"><span class="mela-num">70</span><span class="mela-name">Nasikabhushani</span></div>
+    <div class="mela-cell"><span class="mela-num">71</span><span class="mela-name">Kosalam</span></div>
+    <div class="mela-cell"><span class="mela-num">72</span><span class="mela-name">Rasikapriya</span></div>
+  </div>
+</section>
+
+<!-- Page 10-11 -->
+<div class="page-marker">Pages 10–11</div>
+<section class="section" id="sec-janya">
+  <h2 class="section-h">Janya Ragas — <em>The Living Forest</em></h2>
+  <p>Each of the 72 Melakarthas is a parent (Janaka) Raga from which an unlimited number of derived (Janya) Ragas can be generated by omitting, reordering, or selectively emphasising specific notes. The Melakarthas are the genetic code; the Janya Ragas are the living species that emerge from them. The documented Janya Raga population currently exceeds 1,000 and continues to grow. <a href="https://ragajunglism.org/ragas/masterlist" class="source-ref" target="_blank">Masterlist of 1000+ Ragas</a></p>
+
+  <div class="grid-2">
+    <div class="card">
+      <h4>Types of Janya Ragas by Note Count</h4>
+      <p><strong>Sampūrṇa (7 notes)</strong> — Uses all seven Svaras in both ascent and descent. The richest Raga category. E.g., Shankarabharanam (equivalent to major scale).<br><br>
+      <strong>Ṣāḍava (6 notes)</strong> — One note omitted in ascent or descent. E.g., Hamsadhvani (no Madhyama and Dhaivata in ascent).<br><br>
+      <strong>Auḍava (5 notes)</strong> — Pentatonic. E.g., Mohanam — the most universally appealing Raga, corresponding to the pentatonic scale used in folk traditions worldwide.</p>
+    </div>
+    <div class="card">
+      <h4>Vakra Ragas — Zigzag Ragas</h4>
+      <p>Some Janya Ragas have non-linear (Vakra) movements — notes that appear in unexpected orders, "zigzagging" against the natural scale direction. This creates the distinctive phrases (Chalan) that make each Raga instantly recognisable. The Vakra movement is not an error — it is a precise acoustic fingerprint that activates specific neural patterns.<br><br>E.g., Raga Bhairavi's characteristic Ga-Re-Ga-Ma movement in descent.</p>
+    </div>
+  </div>
+
+  <h3 class="sub-h">Janya Raga Classification by Origin Melakartha</h3>
+  <table class="raga-table">
+    <thead><tr><th>Melakartha Parent</th><th>Famous Janya Ragas</th><th>Rasa Character</th><th>Therapeutic Application</th></tr></thead>
+    <tbody>
+      <tr><td>15 — Mayamalavagowla</td><td class="raga-name">Bhairavi, Asavari</td><td>Karuṇa (compassion), pathos</td><td>Grief release, cortisol reduction, dawn</td></tr>
+      <tr><td>28 — Harikambhoji</td><td class="raga-name">Kapi, Khamas</td><td>Śṛṅgāra (devotional love)</td><td>Heart opening, serotonin elevation</td></tr>
+      <tr><td>29 — Sankarabharanam</td><td class="raga-name">Bilaval, Durga, Hindolam</td><td>Śānta (peace), Vīra (heroism)</td><td>Nervous system stabilisation</td></tr>
+      <tr><td>65 — Mechakalyani</td><td class="raga-name">Yaman, Kalyani</td><td>Śṛṅgāra, grandeur, elevation</td><td>Evening calm, serotonin, creativity</td></tr>
+      <tr><td>22 — Kharaharapriya</td><td class="raga-name">Kafi, Darbari Kanada</td><td>Karuṇa, Vīra (midnight)</td><td>Emotional depth, midnight healing</td></tr>
+      <tr><td>20 — Natabhairavi</td><td class="raga-name">Bhairavi, Sindhu Bhairavi</td><td>Karuṇa, Śānta</td><td>Ending of concerts — resolution</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- Page 12 -->
+<div class="page-marker">Page 12</div>
+<section class="section" id="sec-hindustani">
+  <h2 class="section-h">Hindustani Classification — <em>The Northern System</em></h2>
+  <p>The Hindustani (North Indian) classical music tradition developed a parallel but distinct classification system. Bhatkhande's 10 Thaats (parent scales) provide the Hindustani equivalent of the 72 Melakarthas — a more compact system reflecting the specific Raga repertoire of the North Indian tradition. <a href="https://computationalmusic.com/raga-classification-system.html" class="source-ref" target="_blank">Computational Music</a></p>
+
+  <table class="raga-table">
+    <thead><tr><th>Thaat</th><th>Key Notes</th><th>Major Ragas</th><th>Equivalent Carnatic Melakartha</th></tr></thead>
+    <tbody>
+      <tr><td><span class="raga-name">Bilawal</span></td><td>All natural</td><td>Alhaiya Bilawal, Durga</td><td>29 — Sankarabharanam</td></tr>
+      <tr><td><span class="raga-name">Kalyan</span></td><td>Tivra Ma</td><td>Yaman, Bhupali</td><td>65 — Mechakalyani</td></tr>
+      <tr><td><span class="raga-name">Khamaj</span></td><td>Komal Ni</td><td>Khamaj, Rageshri</td><td>28 — Harikambhoji</td></tr>
+      <tr><td><span class="raga-name">Bhairav</span></td><td>Komal Re, Komal Dha</td><td>Bhairav, Ramkali</td><td>15 — Mayamalavagowla</td></tr>
+      <tr><td><span class="raga-name">Poorvi</span></td><td>Komal Re, Tivra Ma, Komal Dha</td><td>Poorvi, Puriya</td><td>51 — Kamavardhini</td></tr>
+      <tr><td><span class="raga-name">Marwa</span></td><td>Komal Re, Tivra Ma</td><td>Marwa, Sohini</td><td>53 — Gamanashrama</td></tr>
+      <tr><td><span class="raga-name">Kafi</span></td><td>Komal Ga, Komal Ni</td><td>Kafi, Darbari, Bhimpalasi</td><td>22 — Kharaharapriya</td></tr>
+      <tr><td><span class="raga-name">Asavari</span></td><td>Komal Ga, Komal Dha, Komal Ni</td><td>Asavari, Desi</td><td>20 — Natabhairavi</td></tr>
+      <tr><td><span class="raga-name">Bhairavi</span></td><td>Komal Re, Ga, Dha, Ni</td><td>Bhairavi, Sindhu Bhairavi</td><td>8 — Hanumatodi</td></tr>
+      <tr><td><span class="raga-name">Todi</span></td><td>Komal Re, Ga, Tivra Ma, Komal Dha</td><td>Miyan ki Todi, Multani</td><td>45 — Subhapantuvarali</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- Page 13-14 -->
+<div class="page-marker">Pages 13–14</div>
+<section class="section" id="sec-84ragas">
+  <h2 class="section-h">The <em>84 Principal Ragas</em></h2>
+  <p>Across both Carnatic and Hindustani traditions, 84 Ragas have been identified as the principal therapeutic and aesthetic vehicles — each occupying a unique and irreplaceable niche in the complete pharmacopoeia of sound. <a href="https://amitray.com/the-84-ragas-of-indian-classical-music-a-complete-guide" class="source-ref" target="_blank">84 Ragas — Complete Guide</a></p>
+
+  <div class="callout">
+    <span class="callout-label">Why 84?</span>
+    <p>The number 84 is not arbitrary. In Vedic mathematics, 84 (= 7 × 12) represents the complete intersection of the 7 Svaras with the 12 chromatic positions. It also corresponds to the 84 Siddhas of the Nath tradition and the 84 Āsanas of classical Hatha Yoga — suggesting a unified numerical framework across the classical sciences of sound, movement, and consciousness.</p>
+  </div>
+
+  <table class="raga-table">
+    <thead><tr><th>Raga</th><th>Tradition</th><th>Time of Day</th><th>Rasa</th><th>Key Therapeutic Use</th></tr></thead>
+    <tbody>
+      <tr><td><span class="raga-name">Bhairav</span></td><td>Hindustani</td><td>Dawn 6–9am</td><td>Karuṇa, Śānta</td><td>Morning grounding, autonomic balance</td></tr>
+      <tr><td><span class="raga-name">Bhairavi</span></td><td>Both</td><td>Dawn/conclusion</td><td>Karuṇa, Śṛṅgāra</td><td>Cortisol normalisation, emotional release</td></tr>
+      <tr><td><span class="raga-name">Yaman / Kalyani</span></td><td>Hindustani/Carnatic</td><td>Dusk 6–9pm</td><td>Śṛṅgāra, grandeur</td><td>Evening serotonin, creativity, devotion</td></tr>
+      <tr><td><span class="raga-name">Todi</span></td><td>Both</td><td>Late morning 10am–1pm</td><td>Karuṇa, Śṛṅgāra</td><td>Deep healing, immune activation</td></tr>
+      <tr><td><span class="raga-name">Bhimpalasi</span></td><td>Hindustani</td><td>Afternoon 3–6pm</td><td>Śṛṅgāra, Vīra</td><td>Energy activation, afternoon revitalisation</td></tr>
+      <tr><td><span class="raga-name">Darbari Kanada</span></td><td>Hindustani</td><td>Midnight</td><td>Karuṇa, Vīra</td><td>Grief resolution, midnight healing</td></tr>
+      <tr><td><span class="raga-name">Bageshri</span></td><td>Hindustani</td><td>Midnight</td><td>Śṛṅgāra, Śānta</td><td>Deep meditation, BP reduction</td></tr>
+      <tr><td><span class="raga-name">Mohanam</span></td><td>Carnatic</td><td>Evening</td><td>Śṛṅgāra, Śānta</td><td>Universal resonance, cross-cultural appeal</td></tr>
+      <tr><td><span class="raga-name">Hamsadhvani</span></td><td>Carnatic</td><td>Evening</td><td>Śānta, Adbhuta</td><td>Spiritual elevation, wonder, clarity</td></tr>
+      <tr><td><span class="raga-name">Kafi</span></td><td>Hindustani</td><td>Midnight</td><td>Śṛṅgāra (Holi)</td><td>Celebratory, seasonal healing (spring)</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ═══════════════════════════════════════
+     PART III — SCIENCE OF RAGA ANALYSIS
+═══════════════════════════════════════ -->
+<div class="part-header page-break" id="part-3">
+  <div class="part-num">III</div>
+  <div class="part-eyebrow">Part Three · Pages 15–22</div>
+  <h2 class="part-title">The Science of<br><em>Raga Analysis</em></h2>
+  <p class="part-intro">Every Raga is a complete acoustic organism with a precise anatomy. Understanding how to systematically analyse a Raga — its grammar, its physiology, its emotional spectrum — is the foundation of both intelligent listening and intelligent performance.</p>
+</div>
+
+<!-- Page 15-16 -->
+<div class="page-marker">Pages 15–16</div>
+<section class="section" id="sec-anatomy">
+  <h2 class="section-h">Anatomy of a <em>Raga</em></h2>
+  <p>A Raga is not merely a scale. It is a complete acoustic personality with multiple defining parameters. Two Ragas can share the same notes and still be entirely different entities — distinguished by their characteristic phrases, ornaments, emphasised notes, and approach patterns. Understanding the full anatomy of a Raga is the foundation of Raga analysis.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <h4>1. Āroha — Ascending Pattern</h4>
+      <p>The specific route the Raga takes from Sa (tonic) to the upper Sa. Not all notes need be present. The ascending pattern establishes the Raga's tonal "personality" — its characteristic upward movement.</p>
+    </div>
+    <div class="card">
+      <h4>2. Avaroha — Descending Pattern</h4>
+      <p>The descent from upper Sa back to Sa. Often different from the ascent — this asymmetry is one of the most distinctive features of Indian classical music and a primary source of each Raga's unique character.</p>
+    </div>
+    <div class="card">
+      <h4>3. Vādī — The King Note</h4>
+      <p>The most important note of the Raga — its "tonal centre of gravity." A well-composed Raga performance returns to the Vādī repeatedly. Its position (in the upper or lower half of the scale) determines the Raga's appropriate time of day.</p>
+    </div>
+    <div class="card">
+      <h4>4. Samvādī — The Minister Note</h4>
+      <p>The second most important note — the Vādī's perfect complement. It is always a perfect fourth or fifth away from the Vādī, ensuring consonant harmonic support for the Raga's tonal centre.</p>
+    </div>
+    <div class="card">
+      <h4>5. Vivādī — The Dissonant Note</h4>
+      <p>Notes that create deliberate tension within the Raga — used sparingly for dramatic effect. Their use is governed by precise rules; arbitrary use of Vivādī notes produces acoustic dissonance with harmful physiological effects.</p>
+    </div>
+    <div class="card">
+      <h4>6. Anuvādī — Supporting Notes</h4>
+      <p>All remaining notes that support the Vādī and Samvādī. Their proper use gives the Raga its characteristic texture and emotional depth without dominating the tonal narrative.</p>
+    </div>
+    <div class="card">
+      <h4>7. Gamaka — Ornaments</h4>
+      <p>The micro-tonal ornamental movements that are the living "handwriting" of each Raga. Gamakas are not decorations — they are acoustically essential. A Raga rendered without its characteristic Gamakas is not that Raga at all. <a href="https://web-harmonium.com/harmonium-notes" class="source-ref" target="_blank">Web Harmonium</a></p>
+    </div>
+    <div class="card">
+      <h4>8. Mukhyāṅga — Characteristic Phrase</h4>
+      <p>The defining melodic phrase that is the Raga's signature — its acoustic DNA. A trained listener can identify a Raga within three seconds of hearing its Mukhyāṅga. This phrase encodes the Raga's specific therapeutic and emotional content.</p>
+    </div>
+    <div class="card">
+      <h4>9. Nyāsa — Resting Tone</h4>
+      <p>The note on which phrases characteristically end within the Raga. The Nyāsa creates the Raga's distinctive cadential feel — its sense of momentary resolution before the next phrase begins.</p>
+    </div>
+    <div class="card">
+      <h4>10. Chalan — Movement Pattern</h4>
+      <p>The characteristic melodic movement pattern that captures the overall "gait" of the Raga — how it moves through its notes. The Chalan is the Raga's movement signature, as distinctive as a person's walk.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Page 17-18 -->
+<div class="page-marker">Pages 17–18</div>
+<section class="section" id="sec-analysis">
+  <h2 class="section-h">How to <em>Analyse a Raga</em> — The Complete Framework</h2>
+  <p>Systematic Raga analysis follows a seven-step protocol that moves from the structural to the physiological to the cosmic. This framework — derived from the Saṃgīta Ratnākara and validated by modern neuroscience and bio-acoustics — gives any practitioner a complete picture of a Raga's nature, application, and therapeutic potential.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h4>Structural Identification</h4>
+        <p>Identify the parent Melakartha (Carnatic) or Thaat (Hindustani). Note all notes present in ascent and descent. Identify note count type (Sampūrṇa/Ṣāḍava/Auḍava). Confirm Vakra (zigzag) elements if present. This gives the Raga's "genetic lineage."</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h4>Acoustic Fingerprinting</h4>
+        <p>Identify the Vādī and Samvādī. Locate the Nyāsa (resting tones). Identify the Mukhyāṅga (characteristic phrase). Document the specific Gamakas unique to this Raga. This is the Raga's "acoustic DNA" — the elements that make it irreducibly itself.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <h4>Temporal Mapping</h4>
+        <p>Determine the Raga's appropriate time of day (Prahara) using the Vādī-position rule: if the Vādī is in the upper half (Pa to upper Sa), the Raga belongs to the evening-midnight period; lower half (Sa to Ma) indicates morning-afternoon. Cross-reference with seasonal appropriateness (Ritu-Raga correspondences).</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <h4>Rasa Analysis</h4>
+        <p>Identify the primary Rasa (emotional state) the Raga reliably evokes. Apply the Rasa table from the Natya Shastra: Śṛṅgāra (love), Hāsya (comedy), Karuṇa (compassion), Raudra (fury), Vīra (heroism), Bhayānaka (terror), Bībhatsa (disgust), Adbhuta (wonder), Śānta (peace). Each Raga has a primary Rasa and one or two secondary Rasas.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-body">
+        <h4>Physiological Profiling</h4>
+        <p>Based on the note set, Śruti positions, and Rasa identification, map the Raga's documented physiological effects: brainwave entrainment pattern (delta, theta, alpha, beta, gamma), autonomic nervous system direction (sympathetic activation vs. parasympathetic restoration), primary endocrine effects (cortisol, serotonin, dopamine, oxytocin), and Chakra activation profile.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">6</div>
+      <div class="step-body">
+        <h4>Nakshatra &amp; Cosmic Correspondence</h4>
+        <p>Identify the Raga's Nakshatra correspondence from the Celestial Synthesis matrix. Each Raga is assigned to one of the 27 Nakshatras — enabling time-based therapeutic prescriptions aligned to lunar cycles and the patient's Janma Nakshatra (birth star). This is the most clinically advanced level of Raga analysis.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">7</div>
+      <div class="step-body">
+        <h4>Clinical Prescription Profile</h4>
+        <p>Synthesise all the above into a clinical prescription: which conditions this Raga addresses, optimal duration of exposure, best delivery mode (live performance, recorded, self-practice, group listening), contraindications (conditions where this Raga should not be used — e.g., highly stimulating Ragas in anxiety disorders), and integration with other MCP phases.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 19 -->
+<div class="page-marker">Page 19</div>
+<section class="section" id="sec-pharmacopoeia">
+  <h2 class="section-h">The Raga <em>Pharmacopoeia</em></h2>
+  <p>The following constitutes a summary pharmacopoeia — a prescriptive reference for the principal Ragas used in Nada Chikitsa (sound healing). Each Raga is documented with its complete clinical profile. Full pharmacopoeia available at <strong>nada-chikitsa.culturalmusings.com</strong>.</p>
+
+  <table class="raga-table">
+    <thead>
+      <tr><th>Raga</th><th>Primary Condition</th><th>Neural Effect</th><th>Hormonal Effect</th><th>Duration</th><th>Optimal Time</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><span class="raga-name">Bhairav</span></td><td>Morning anxiety, depression</td><td>Delta-Theta entrainment</td><td>↓ Cortisol, ↑ Serotonin</td><td>20–45 min</td><td>6–8am</td></tr>
+      <tr><td><span class="raga-name">Todi</span></td><td>Immune deficiency, grief</td><td>Bilateral sync</td><td>↑ NK cell activity</td><td>30–60 min</td><td>10am–1pm</td></tr>
+      <tr><td><span class="raga-name">Yaman</span></td><td>Creative block, mild depression</td><td>Alpha-Beta transition</td><td>↑ Dopamine, ↑ Serotonin</td><td>20–45 min</td><td>Dusk 6–9pm</td></tr>
+      <tr><td><span class="raga-name">Darbari Kanada</span></td><td>Grief, acute emotional pain</td><td>Limbic activation</td><td>↑ Oxytocin</td><td>30–60 min</td><td>Midnight</td></tr>
+      <tr><td><span class="raga-name">Bhairavi</span></td><td>Insomnia, chronic stress</td><td>Theta induction</td><td>↓ Cortisol (sustained)</td><td>20–40 min</td><td>Dawn/concert end</td></tr>
+      <tr><td><span class="raga-name">Bageshri</span></td><td>Hypertension, midnight anxiety</td><td>Deep parasympathetic</td><td>↓ BP, ↓ HR</td><td>30–60 min</td><td>Midnight</td></tr>
+      <tr><td><span class="raga-name">Hamsadhvani</span></td><td>Spiritual disorientation, wonder-deficit</td><td>Gamma coherence</td><td>↑ Endorphins</td><td>15–30 min</td><td>Evening</td></tr>
+      <tr><td><span class="raga-name">Bhimpalasi</span></td><td>Afternoon fatigue, digestive issues</td><td>Beta activation</td><td>↑ Digestive enzymes</td><td>20–45 min</td><td>3–6pm</td></tr>
+      <tr><td><span class="raga-name">Malkauns</span></td><td>Neurological conditions</td><td>Deep theta</td><td>↑ GABA, ↓ Glutamate</td><td>30–60 min</td><td>Midnight</td></tr>
+      <tr><td><span class="raga-name">Mohanam</span></td><td>Universal — introductory therapy</td><td>Balanced alpha</td><td>Stable — no extremes</td><td>15–45 min</td><td>Evening</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- Page 20 -->
+<div class="page-marker">Page 20</div>
+<section class="section" id="sec-time">
+  <h2 class="section-h">Time, Season &amp; <em>Cosmic Alignment</em></h2>
+  <p>One of the most scientifically remarkable features of the Raga system is its built-in temporal organisation. Each Raga is prescribed for a specific time of day and season — a system that modern chronobiology is now validating through its discoveries about circadian rhythms, cortisol cycles, and the time-dependent sensitivity of the nervous system.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <h4>The Prahara System</h4>
+      <p>The 24-hour day is divided into 8 Praharas (three-hour periods). Each Prahara is associated with specific Ragas whose acoustic character matches the human nervous system's natural state at that time. Dawn Ragas (Bhairav, Lalit) activate the system gently. Midnight Ragas (Darbari, Bageshri) work with the deepest parasympathetic state.</p>
+    </div>
+    <div class="card">
+      <h4>Seasonal Ragas (Ṛtu-Rāgas)</h4>
+      <p>Specific Ragas are prescribed for each of the six Indian seasons (Ṛtus): Vasant (spring), Grīṣma (summer), Varṣā (monsoon), Śarad (autumn), Hemant (early winter), Śiśira (deep winter). The Ṛtu-Rāga system encodes the relationship between seasonal atmospheric frequencies and human physiological cycles — a form of ecological medicine through sound.</p>
+    </div>
+  </div>
+
+  <table class="raga-table">
+    <thead><tr><th>Prahara (Period)</th><th>Time</th><th>Ragas</th><th>Physiological State</th></tr></thead>
+    <tbody>
+      <tr><td>Brahma Muhūrta</td><td>4–6am</td><td>Lalit, Ramkali, Bairagen Bhairav</td><td>Peak cortisol rise — use calming, transcendent Ragas</td></tr>
+      <tr><td>Prātaḥkāla</td><td>6–9am</td><td>Bhairav, Ahir Bhairav</td><td>Autonomic activation — grounding Ragas</td></tr>
+      <tr><td>Pūrvāhna</td><td>9am–12pm</td><td>Todi, Gunkali, Bhupali</td><td>Peak alertness — deeper meditative Ragas</td></tr>
+      <tr><td>Madhyāhna</td><td>12–3pm</td><td>Sarang, Bhimpalasi, Nayaki</td><td>Post-lunch dip — energising, warming Ragas</td></tr>
+      <tr><td>Aparāhna</td><td>3–6pm</td><td>Bhimpalasi, Shree, Puriya Dhanashri</td><td>Afternoon rise — bright, expansive Ragas</td></tr>
+      <tr><td>Sandhyā</td><td>6–9pm</td><td>Yaman, Kalyani, Marwa</td><td>Dusk — serotonin peak — elevating Ragas</td></tr>
+      <tr><td>Rātri</td><td>9pm–12am</td><td>Kafi, Jaunpuri, Adana</td><td>Evening wind-down — rich, complex Ragas</td></tr>
+      <tr><td>Niśā</td><td>12–3am</td><td>Darbari, Bageshri, Malkauns</td><td>Deepest parasympathetic — profound, dark Ragas</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- Page 21 -->
+<div class="page-marker">Page 21</div>
+<section class="section" id="sec-rasa">
+  <h2 class="section-h">Rasa — <em>The Emotional Science of Ragas</em></h2>
+  <p>The Nine Rasas (Navarasas) of the Natya Shastra constitute the world's most complete framework for understanding the relationship between art and human emotion. Each Raga is associated with one or more Rasas — not as an aesthetic label but as a precise neurochemical prescription. <a href="https://www.opensadhaka.com/" class="source-ref" target="_blank">OpenSadhaka</a></p>
+
+  <div class="grid-3">
+    <div class="card-sm"><span class="icon">❤️</span><h5>Śṛṅgāra</h5><p>Love, beauty, devotion — Ragas: Yaman, Khamaj, Bhimpalasi · Serotonin + Oxytocin</p></div>
+    <div class="card-sm"><span class="icon">😄</span><h5>Hāsya</h5><p>Joy, laughter, lightness — Ragas: Pahadi, folk derivatives · Endorphin release</p></div>
+    <div class="card-sm"><span class="icon">💧</span><h5>Karuṇa</h5><p>Compassion, grief, pathos — Ragas: Bhairavi, Darbari, Todi · Cortisol clearing</p></div>
+    <div class="card-sm"><span class="icon">⚡</span><h5>Raudra</h5><p>Fury, intensity — Ragas: Bhairava (Kapali form) · Adrenaline channelling</p></div>
+    <div class="card-sm"><span class="icon">🦁</span><h5>Vīra</h5><p>Heroism, courage — Ragas: Darbari Kanada, Durga · Testosterone, confidence</p></div>
+    <div class="card-sm"><span class="icon">🌑</span><h5>Bhayānaka</h5><p>Terror, the sublime — Ragas: Malkauns (deep night) · Parasympathetic depth</p></div>
+    <div class="card-sm"><span class="icon">🌿</span><h5>Bībhatsa</h5><p>Disgust, purification — Used in healing to catalyse release of toxic patterns</p></div>
+    <div class="card-sm"><span class="icon">✨</span><h5>Adbhuta</h5><p>Wonder, the miraculous — Ragas: Hamsadhvani, Tilang · Gamma brainwaves</p></div>
+    <div class="card-sm"><span class="icon">☮️</span><h5>Śānta</h5><p>Peace, equanimity — Ragas: Bhupali, Desh, Bageshri · Deep alpha, GABA</p></div>
+  </div>
+</section>
+
+<!-- Page 22 -->
+<div class="page-marker">Page 22</div>
+<section class="section" id="sec-neuro">
+  <h2 class="section-h">Neurological Evidence — <em>What Science Confirms</em></h2>
+  <p>The therapeutic claims of the Raga tradition are no longer solely matters of faith or tradition. Peer-reviewed neuroscience has produced substantial evidence for the specific physiological mechanisms through which Ragas exert their documented effects.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <h4>EEG Studies</h4>
+      <p>Bhattacharya et al. (2001) confirmed that Indian classical music listening produces measurable changes in EEG alpha and theta band power, with specific Ragas producing characteristically different patterns — validating the ancient prescription of different Ragas for different mental states.</p>
+    </div>
+    <div class="card">
+      <h4>Cortisol Reduction</h4>
+      <p>Multiple clinical trials confirm salivary cortisol reduction of 15–32% following 30-minute Raga listening sessions — with greater reductions for Ragas prescribed in the Nada Chikitsa tradition for stress reduction (Bhairavi, Bageshri) than for other genres.</p>
+    </div>
+    <div class="card">
+      <h4>Cardiac Effects</h4>
+      <p>Kumar et al. found that Raga Bhairavi produced significant reduction in heart rate, blood pressure, and respiratory rate — matching the Nada Chikitsa prescription of Bhairavi for cardiovascular conditions. The effect was measurably different from white noise or Western music controls.</p>
+    </div>
+    <div class="card">
+      <h4>Neuroplasticity</h4>
+      <p>Long-term Raga practitioners show measurably increased grey matter density in the right superior temporal gyrus and right hemispheric auditory cortex — evidence that sustained engagement with Raga music physically reshapes the brain. <a href="https://vedyog.net/" class="source-ref" target="_blank">VedYog</a></p>
+    </div>
+  </div>
+
+  <div class="section" id="sec-coexist">
+    <h2 class="section-h">Raga <em>Coexistence</em> — The Complete Ecosystem</h2>
+    <p>Perhaps the most profound insight of the Raga system is that its thousands of Ragas do not compete. They coexist as a complete ecological system — each occupying a unique niche defined by time, season, emotional register, and physiological application. No two Ragas occupy exactly the same niche. Together, they constitute a pharmacopoeia without gaps — a complete acoustic medicine cabinet for every human condition. <a href="https://ragajunglism.org/ragas" class="source-ref" target="_blank">Raga Junglism</a></p>
+
+    <div class="pull">
+      <p>"The Raga ecosystem is one of humanity's most complete models of coexistence without competition — each element unique, necessary, and irreplaceable within the whole. The Ragas teach us something about society that politics never learned: that diversity is not a problem to be managed but a resource to be honoured."</p>
+      <cite>— Naredla Rama Chandra, Nada Chikitsa</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     PART IV — TYPES & TAXONOMY
+═══════════════════════════════════════ -->
+<div class="part-header page-break" id="part-4">
+  <div class="part-num">IV</div>
+  <div class="part-eyebrow">Part Four · Pages 23–28</div>
+  <h2 class="part-title">Types, Taxonomy &amp;<br><em>The Root Map</em></h2>
+  <p class="part-intro">The classification of Ragas is itself a science — one that has evolved from simple modal categorisation in the Natya Shastra to the elegant mathematical completeness of the 72 Melakarta system. Understanding the full taxonomy is essential to any serious engagement with Raga science.</p>
+</div>
+
+<!-- Page 23-24 -->
+<div class="page-marker">Pages 23–24</div>
+<section class="section" id="sec-types">
+  <h2 class="section-h">Complete <em>Classification Systems</em></h2>
+
+  <h3 class="sub-h">Classification by Note Count</h3>
+  <ul class="key-list">
+    <li><strong>Sampūrṇa — Heptatonic (7 notes)</strong> — Full seven-note scale in both ascent and descent. Maximum tonal richness. Example: Shankarabharanam, Bhairav.</li>
+    <li><strong>Ṣāḍava-Sampūrṇa (6↑, 7↓)</strong> — Six notes ascending, seven descending. The extra note added in descent creates a characteristic melancholy or emotional depth in the downward movement.</li>
+    <li><strong>Sampūrṇa-Ṣāḍava (7↑, 6↓)</strong> — Seven ascending, six descending. The missing note in descent creates a sense of suspension or longing.</li>
+    <li><strong>Ṣāḍava — Hexatonic (6 notes)</strong> — One note omitted from both ascent and descent. Creates distinctive melodic space around the missing note.</li>
+    <li><strong>Auḍava — Pentatonic (5 notes)</strong> — Two notes omitted. The most universally appealing category — appears in folk music worldwide. Mohanam is the Indian equivalent of the major pentatonic.</li>
+    <li><strong>Sādhāraṇa (special types)</strong> — Ragas that use more than 7 notes (through microtonal variations) or have non-standard ascending-descending relationships.</li>
+  </ul>
+
+  <h3 class="sub-h">Classification by Time</h3>
+  <ul class="key-list">
+    <li><strong>Sandhiprakāśa Ragas</strong> — Ragas of the twilight junctions (dawn and dusk). These use both Komal (flat) and Tīvra (sharp) variants of the same note — reflecting the transitional quality of dusk and dawn. Example: Bhairav (uses both Komal and Tīvra variants).</li>
+    <li><strong>Rātri Ragas (Night Ragas)</strong> — Ragas with Komal Ga, Ni — the "softer" notes that activate the parasympathetic system appropriate for night healing. Darbari, Bageshri, Malkauns.</li>
+    <li><strong>Dīvā Ragas (Day Ragas)</strong> — Ragas using Tīvra (sharp) notes — the "brighter" notes appropriate for daytime energy. Todi, Bhimpalasi, Yaman.</li>
+  </ul>
+
+  <h3 class="sub-h">Classification by Rasa</h3>
+  <ul class="key-list">
+    <li><strong>Śṛṅgāra Ragas</strong> — Love, devotion, beauty: Yaman, Khamaj, Bhimpalasi, Des, Kirwani</li>
+    <li><strong>Karuṇa Ragas</strong> — Compassion, pathos: Bhairavi, Todi, Darbari, Jogiya</li>
+    <li><strong>Vīra Ragas</strong> — Heroism, strength: Durgā, Bihag, Kedar</li>
+    <li><strong>Śānta Ragas</strong> — Peace, equanimity: Bhupali, Bageshri, Mohanam, Hamsadhvani</li>
+    <li><strong>Adbhuta Ragas</strong> — Wonder, the transcendent: Hamsadhvani, Yaman (at its peak)</li>
+  </ul>
+</section>
+
+<!-- Page 25-26 -->
+<div class="page-marker">Pages 25–26</div>
+<section class="section" id="sec-categories">
+  <h2 class="section-h">Major Raga <em>Categories in Detail</em></h2>
+
+  <h3 class="sub-h">The Ragas of Dawn — Prātaḥkāla Ragas</h3>
+  <p>The dawn Ragas are among the most therapeutically significant — they work with the body's natural cortisol rise (which peaks between 6–8am) to produce a balanced activation that neither over-stimulates nor suppresses. They use the interval of the minor second (Komal Re, Komal Dha) — a distinctive "roughness" that reflects the incomplete resolution of night transitioning into day.</p>
+
+  <table class="raga-table">
+    <thead><tr><th>Raga</th><th>Key Notes</th><th>Primary Rasa</th><th>Therapeutic Specialty</th></tr></thead>
+    <tbody>
+      <tr><td><span class="raga-name">Bhairav</span></td><td>Komal Re, Komal Dha</td><td>Śānta, Karuṇa</td><td>Morning autonomic balance, cortisol regulation</td></tr>
+      <tr><td><span class="raga-name">Lalit</span></td><td>Komal Re, Komal Ni, Tīvra Ma (no Pa)</td><td>Śṛṅgāra, Karuṇa</td><td>Pre-dawn spiritual practice, deep devotion</td></tr>
+      <tr><td><span class="raga-name">Ramkali</span></td><td>Komal Re, Ga, Tīvra Ma, Komal Dha</td><td>Śānta, Vīra</td><td>Mental clarity, decision-making</td></tr>
+      <tr><td><span class="raga-name">Vibhas</span></td><td>Komal Re, Komal Dha (no Ga, Ni)</td><td>Śānta</td><td>Purification, simplification</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="sub-h">The Ragas of Evening — Sandhyā Ragas</h3>
+  <p>Evening Ragas are characterised by the use of Tīvra Madhyama (the augmented fourth — #4) — a distinctive interval that creates the luminous, uplifted quality associated with dusk. Yaman, the king of evening Ragas, uses exclusively natural and sharp notes to create an atmosphere of serene grandeur.</p>
+
+  <table class="raga-table">
+    <thead><tr><th>Raga</th><th>Key Notes</th><th>Primary Rasa</th><th>Therapeutic Specialty</th></tr></thead>
+    <tbody>
+      <tr><td><span class="raga-name">Yaman / Kalyani</span></td><td>All natural + Tīvra Ma</td><td>Śṛṅgāra, grandeur</td><td>Serotonin elevation, creativity, devotion</td></tr>
+      <tr><td><span class="raga-name">Marwa</span></td><td>Komal Re, Tīvra Ma (no Pa)</td><td>Karuṇa, longing</td><td>Transitional anxiety, twilight psychology</td></tr>
+      <tr><td><span class="raga-name">Sohini</span></td><td>Komal Re, Tīvra Ma, Komal Dha</td><td>Śṛṅgāra</td><td>Romantic devotion, late evening</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="sub-h">The Ragas of Midnight — Niśā Ragas</h3>
+  <p>Midnight Ragas work with the deepest parasympathetic state of the night to produce the most profound therapeutic effects. They are characterised by heavy use of Komal (flat) notes — the acoustic equivalent of the body's deepest rest state. Malkauns (no Re, no Pa — the most "empty" of all principal Ragas) produces an experience of profound stillness that EEG studies associate with deep theta and pre-sleep stages.</p>
+</section>
+
+<!-- Page 27-28 — ROOT MAP -->
+<div class="page-marker">Pages 27–28</div>
+<section class="section" id="sec-rootmap">
+  <h2 class="section-h">The Complete <em>Raga Root Map</em></h2>
+  <p>The following Root Map provides the complete architectural overview of the Raga system — from the cosmic foundations through the classification hierarchy to the applied therapeutic matrix. This map is the navigational framework for the entire Cultural Musings Raga research archive.</p>
+
+  <div class="rootmap">
+    <div class="rootmap-title">RAGA VIDYĀ — COMPLETE ROOT MAP · Cultural Musings</div>
+    <div class="rootmap-tree">
+      <div class="node-1">⬛ NĀDA BRAHMAN — Cosmic Acoustic Foundation</div>
+      <div class="node-2">├── Parā Vāk (Transcendent Sound — Pure Consciousness)</div>
+      <div class="node-2">├── Paśyantī Vāk (Visionary Sound — Vedic transmission)</div>
+      <div class="node-2">├── Madhyamā Vāk (Mental Sound — inner hearing)</div>
+      <div class="node-2">└── Vaikharī Vāk (Expressed Sound — music, language)</div>
+      <br>
+      <div class="node-1">⬛ 22 ŚRUTIS — Microtonal Architecture</div>
+      <div class="node-2">├── Derived from natural harmonic series (pure integer ratios)</div>
+      <div class="node-2">├── 3 types: Dīrgha (2:1), Bṛhat (3:2), Laghu (9:8)</div>
+      <div class="node-2">└── Foundation of all Melakartha mathematics</div>
+      <br>
+      <div class="node-1">⬛ SAPTA SWARAS — The 7 Notes</div>
+      <div class="node-2">├── Sa · Re · Ga · Ma · Pa · Dha · Ni</div>
+      <div class="node-2">├── Sa and Pa — Acala (immovable)</div>
+      <div class="node-2">├── Re, Ga, Ma, Dha, Ni — variable (Śuddha/Komal/Tīvra)</div>
+      <div class="node-2">└── Total usable variants: 12 semitone positions</div>
+      <br>
+      <div class="node-1">⬛ 72 MELAKARTHAS — Parent Scale System (Carnatic)</div>
+      <div class="node-2">├── Chakra 1–6: Ma1 (natural 4th) · Ragas 1–36</div>
+      <div class="node-2">│   ├── Chakra 1 (Indu): 1–6 · Chakra 2 (Netra): 7–12</div>
+      <div class="node-2">│   ├── Chakra 3 (Agni): 13–18 · Chakra 4 (Veda): 19–24</div>
+      <div class="node-2">│   ├── Chakra 5 (Bāṇa): 25–30 · Chakra 6 (Ṛtu): 31–36</div>
+      <div class="node-2">├── Chakra 7–12: Ma2 (augmented 4th) · Ragas 37–72</div>
+      <div class="node-2">│   ├── Chakra 7 (Ṛṣi): 37–42 · Chakra 8 (Vasu): 43–48</div>
+      <div class="node-2">│   ├── Chakra 9 (Brahma): 49–54 · Chakra 10 (Diga): 55–60</div>
+      <div class="node-2">│   ├── Chakra 11 (Rudra): 61–66 · Chakra 12 (Āditya): 67–72</div>
+      <div class="node-2">└── Mathematical basis: 6 × 6 × 2 = 72</div>
+      <br>
+      <div class="node-1">⬛ 10 THAATS — Parent Scale System (Hindustani)</div>
+      <div class="node-2">├── Bilawal · Kalyan · Khamaj · Bhairav · Poorvi</div>
+      <div class="node-2">├── Marwa · Kafi · Asavari · Bhairavi · Todi</div>
+      <div class="node-2">└── Cross-mapped to Carnatic Melakartha equivalents</div>
+      <br>
+      <div class="node-1">⬛ JANYA RAGAS — Derived Ragas (1000+)</div>
+      <div class="node-2">├── By Note Count: Sampūrṇa (7) · Ṣāḍava (6) · Auḍava (5)</div>
+      <div class="node-2">├── By Movement: Vakra (zigzag) · Sīdhā (straight)</div>
+      <div class="node-2">├── By Time: Prātaḥ · Pūrvāhna · Sandhyā · Rātri · Niśā</div>
+      <div class="node-2">├── By Season: Vasant · Grīṣma · Varṣā · Śarad · Hemant · Śiśira</div>
+      <div class="node-2">└── By Rasa: Śṛṅgāra · Karuṇa · Vīra · Śānta · Adbhuta (9 total)</div>
+      <br>
+      <div class="node-1">⬛ 84 PRINCIPAL RAGAS — The Core Pharmacopoeia</div>
+      <div class="node-2">├── 42 Carnatic principal Ragas (therapeutic canon)</div>
+      <div class="node-2">├── 42 Hindustani principal Ragas (therapeutic canon)</div>
+      <div class="node-2">└── Full pharmacopoeia: nada-chikitsa.culturalmusings.com</div>
+      <br>
+      <div class="node-1">⬛ RAGA ANATOMY — The 10 Elements</div>
+      <div class="node-2">├── Āroha · Avaroha · Vādī · Samvādī · Vivādī · Anuvādī</div>
+      <div class="node-2">├── Gamaka · Mukhyāṅga · Nyāsa · Chalan</div>
+      <div class="node-2">└── Analysis Framework: 7-step protocol (Part III, Page 17–18)</div>
+      <br>
+      <div class="node-1">⬛ RAGA–NAKSHATRA–KARANA TRI-AXIS MATRIX</div>
+      <div class="node-2">├── Each Raga → corresponding Nakshatra assignment</div>
+      <div class="node-2">├── Each Raga → corresponding Karana (1 of 108)</div>
+      <div class="node-2">├── Each Raga → corresponding Devata and planetary ruler</div>
+      <div class="node-2">└── Full matrix: completecelestialsynthesis.culturalmusings.com</div>
+      <br>
+      <div class="node-1">⬛ RAGA VIDYĀ TRAINING PATHWAYS</div>
+      <div class="node-2">├── Path 1: Learning Perspective (pages 35–37)</div>
+      <div class="node-2">├── Path 2: Meditative Perspective (pages 38–40)</div>
+      <div class="node-2">├── Path 3: Body–Mind–Soul Integration (pages 41–43)</div>
+      <div class="node-2">└── Path 4: Core Practice — 44 Sadhana Practices (page 44)</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     PART V — MUSIC IN HUMAN EXISTENCE
+═══════════════════════════════════════ -->
+<div class="part-header page-break" id="part-5">
+  <div class="part-num">V</div>
+  <div class="part-eyebrow">Part Five · Pages 29–34</div>
+  <h2 class="part-title">Why Music Must Be Part of<br><em>Human Existence</em></h2>
+  <p class="part-intro">Music is not a luxury, a form of entertainment, or an aesthetic preference. In the Vedic understanding — confirmed by modern neuroscience, evolutionary biology, and quantum physics — music is a biological necessity, a cognitive technology, and a spiritual imperative. To remove music from human life is to remove a fundamental mechanism of human health, development, and consciousness.</p>
+</div>
+
+<!-- Page 29 -->
+<div class="page-marker">Page 29</div>
+<section class="section" id="sec-why">
+  <h2 class="section-h">Why <em>Music Must Exist</em> — The Seven Arguments</h2>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h4>The Biological Argument</h4>
+        <p>The human auditory cortex is disproportionately large relative to body size — larger than in any other mammal. This is not an accident of evolution. The human nervous system was designed for music: to produce it, respond to it, and be regulated by it. Music is as biologically native to the human system as language. A life without music is a life with a fundamental physiological deficit.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h4>The Neurological Argument</h4>
+        <p>Music is the only cognitive activity that simultaneously activates all four lobes of the brain — frontal (planning, emotion), temporal (auditory processing), parietal (spatial analysis), and occipital (visual imagery). No other human activity — not language, mathematics, sport, or meditation — produces this level of whole-brain coherence. Regular music practice is therefore the single most effective cognitive exercise available. <a href="https://www.vedadhara.com/english-topics-mantra-shastra" class="source-ref" target="_blank">Vedadhara</a></p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <h4>The Hormonal Argument</h4>
+        <p>Active engagement with music produces a suite of hormonal responses that no pharmaceutical can replicate without side effects: simultaneous elevation of dopamine, serotonin, oxytocin, and endorphins with reduction of cortisol and inflammatory cytokines. Music is the most side-effect-free broad-spectrum hormonal modulator available to human beings.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <h4>The Developmental Argument</h4>
+        <p>Children who receive systematic music education before age 7 show measurably superior language development, mathematical ability, emotional intelligence, and executive function compared to non-music peers — with effects persisting through adulthood. The Vedic tradition knew this: every child received training in Sāma Gāna (vedic chanting) as the foundation of all subsequent learning. <a href="https://mahakatha.com/" class="source-ref" target="_blank">Mahakatha</a></p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-body">
+        <h4>The Social Argument</h4>
+        <p>Synchronised music-making produces oxytocin release and measurable increases in social trust, cooperation, and group cohesion in ways that no other activity replicates. Traditional cultures worldwide used communal music-making as the primary technology of social bonding. The crisis of social isolation and community fragmentation in contemporary society is partly the consequence of removing music from daily social life.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">6</div>
+      <div class="step-body">
+        <h4>The Healing Argument</h4>
+        <p>The documented therapeutic applications of Raga music (see Nada Chikitsa) cover the full range of human affliction — from cardiovascular disease and hypertension to depression, anxiety, insomnia, neurological disorders, and immune deficiency. A healthcare system that ignores music therapy is operating with its most powerful non-pharmaceutical tool unused.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">7</div>
+      <div class="step-body">
+        <h4>The Consciousness Argument</h4>
+        <p>In the Vedic framework — and in Kashmir Śaivism's Spanda doctrine — music is not merely a cognitive or physiological event. It is a direct interface with the vibrational nature of consciousness itself. The Raga, when correctly performed and heard, produces a temporary dissolution of the boundary between individual and universal consciousness — the closest that most human beings ever come to the Turīya (fourth) state outside of deep meditation. <a href="https://www.wisdomlib.org/" class="source-ref" target="_blank">Wisdom Library</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 30-31 -->
+<div class="page-marker">Pages 30–31</div>
+<section class="section" id="sec-healing">
+  <h2 class="section-h">Music as <em>Medicine</em> — The Nada Chikitsa Framework</h2>
+  <p>The clinical application of Raga music for specific medical conditions — Nada Chikitsa — is among the oldest medical traditions in the world and is now gaining robust clinical validation. The framework operates through five primary mechanisms, each targeting a different physiological system.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <h4>Mechanism 1: Acoustic Entrainment</h4>
+      <p>The brain's neural oscillators synchronise with external rhythmic stimuli — a phenomenon called entrainment. Ragas are precisely timed acoustic systems that entrain the brain into specific frequency bands: delta (0.5–4 Hz) for deep healing, theta (4–8 Hz) for meditative states, alpha (8–12 Hz) for relaxed alertness, beta (12–30 Hz) for active processing. The Raga's tempo, rhythm, and ornamental frequency patterns are all tuned to produce specific entrainment effects.</p>
+    </div>
+    <div class="card">
+      <h4>Mechanism 2: Vagal Stimulation</h4>
+      <p>Singing, listening to resonant music, and playing string instruments directly stimulate the vagus nerve through laryngeal and pharyngeal receptors — activating the parasympathetic "rest and heal" nervous system. Polyvagal Theory (Porges, 2011) provides the neuroscientific framework for this mechanism, which the Nada Chikitsa tradition understood functionally for millennia before the vagus nerve was named.</p>
+    </div>
+    <div class="card">
+      <h4>Mechanism 3: Resonant Vibration</h4>
+      <p>At the cellular level, every tissue in the body has a characteristic resonant frequency. When musical frequencies match these resonant frequencies, they amplify the tissue's natural oscillatory state — accelerating cellular repair, waste removal, and biochemical communication. This is the mechanism behind sound bowl therapy, mantra chanting, and certain instrumental Raga practices.</p>
+    </div>
+    <div class="card">
+      <h4>Mechanism 4: Limbic Regulation</h4>
+      <p>The limbic system (emotional brain) directly processes musical input before the cortex can apply rational interpretation. This is why music can change emotional states faster than any cognitive therapy — and why the correct Raga for a given emotional condition is so diagnostically specific. The Rasa-Raga correspondence is essentially a limbic pharmacopoeia.</p>
+    </div>
+    <div class="card">
+      <h4>Mechanism 5: Neuroplastic Remodelling</h4>
+      <p>Sustained music practice over weeks and months produces measurable structural changes in the brain — increased grey matter density, enhanced inter-hemispheric communication, and strengthened neural pathways for emotional regulation and cognitive flexibility. This is why Raga training is prescribed as a long-term intervention rather than a quick fix. <a href="https://vedapurana.org/" class="source-ref" target="_blank">Veda Purana</a></p>
+    </div>
+    <div class="card">
+      <h4>Mechanism 6: Prana Field Coherence</h4>
+      <p>In the Vedic bio-physics framework (elaborated in bioresonancemusings.culturalmusings.com), the body's Pranamaya Kosha (bio-electromagnetic field) is directly responsive to sound vibration. Specific Raga frequencies produce measurable coherence in the bio-field — detectable through bio-photon emission studies and Kirlian photography — that precede and enable the gross physiological changes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Page 32 -->
+<div class="page-marker">Page 32</div>
+<section class="section" id="sec-chakra">
+  <h2 class="section-h">Ragas &amp; the <em>Chakra System</em></h2>
+  <p>Each of the seven Chakras has a primary resonant frequency, associated Bīja mantra, and a family of Ragas whose note sets and Śruti positions activate that Chakra. This is not metaphor — it is applied bio-acoustics. The Chakra-Raga mapping constitutes a complete holistic medicine system. <a href="https://www.sujatanandy.com/the-nyasas-of-tantric-rituals/" class="source-ref" target="_blank">Nyāsa Rituals</a> <a href="https://www.nathas.org/en/dictionary/matrika-nyasa/" class="source-ref" target="_blank">Mātṛkā Nyāsa</a></p>
+
+  <div class="chakra-row">
+    <div class="chakra-label"><div class="chakra-name">Mūlādhāra</div><div class="chakra-skt">मूलाधार</div></div>
+    <div class="chakra-info"><div class="ragas">Ragas: Bhairav, Malkauns, low-pitched drone patterns</div><div class="desc">Root — Sa note — grounding, stability, survival. Deep bass frequencies (60–256 Hz). Activates adrenal function and pelvic floor.</div></div>
+  </div>
+  <div class="chakra-row">
+    <div class="chakra-label"><div class="chakra-name">Svādhiṣṭhāna</div><div class="chakra-skt">स्वाधिष्ठान</div></div>
+    <div class="chakra-info"><div class="ragas">Ragas: Bhimpalasi, Kafi, water-season Ragas (Megh, Mian Malhar)</div><div class="desc">Sacral — Re note — creativity, fluidity, sexuality. Activates sacral plexus and reproductive/digestive endocrine.</div></div>
+  </div>
+  <div class="chakra-row">
+    <div class="chakra-label"><div class="chakra-name">Maṇipūra</div><div class="chakra-skt">मणिपूर</div></div>
+    <div class="chakra-info"><div class="ragas">Ragas: Bihag, Tilang, bright afternoon Ragas</div><div class="desc">Solar plexus — Ga note — personal power, will, identity. Activates adrenal-pancreatic axis and digestive fire (Agni).</div></div>
+  </div>
+  <div class="chakra-row">
+    <div class="chakra-label"><div class="chakra-name">Anāhata</div><div class="chakra-skt">अनाहत</div></div>
+    <div class="chakra-info"><div class="ragas">Ragas: Yaman, Bhairavi, Khamaj, Desh — all Śṛṅgāra Ragas</div><div class="desc">Heart — Ma note — love, compassion, connection. The Anāhata Nāda (unstruck sound) resides here. Vagal activation centre.</div></div>
+  </div>
+  <div class="chakra-row">
+    <div class="chakra-label"><div class="chakra-name">Viśuddha</div><div class="chakra-skt">विशुद्ध</div></div>
+    <div class="chakra-info"><div class="ragas">Ragas: Hamsadhvani, Bhupali, Ahir Bhairav, bright pentatonic Ragas</div><div class="desc">Throat — Pa note — expression, truth, authentic voice. Laryngeal/pharyngeal vagal stimulation. Creative expression.</div></div>
+  </div>
+  <div class="chakra-row">
+    <div class="chakra-label"><div class="chakra-name">Ājñā</div><div class="chakra-skt">आज्ञा</div></div>
+    <div class="chakra-info"><div class="ragas">Ragas: Todi, Lalit, Sohini — ragas with complex microtonal Gamakas</div><div class="desc">Third eye — Dha note — intuition, vision, perception. Activates pineal gland through skull resonance.</div></div>
+  </div>
+  <div class="chakra-row">
+    <div class="chakra-label"><div class="chakra-name">Sahasrāra</div><div class="chakra-skt">सहस्रार</div></div>
+    <div class="chakra-info"><div class="ragas">Ragas: Kirwani, Darbari Kanada (at midnight depth), OM-based drones</div><div class="desc">Crown — Ni note + harmonics beyond — transcendence, unity consciousness. Gamma brainwave territory.</div></div>
+  </div>
+</section>
+
+<!-- Page 33-34 -->
+<div class="page-marker">Pages 33–34</div>
+<section class="section" id="sec-karana">
+  <h2 class="section-h">The Raga–Karana–Nakshatra <em>Tri-Axis Matrix</em></h2>
+  <p>The most advanced integration in the Cultural Musings research archive: the tri-axis mapping of every Raga against its corresponding Karana (sacred movement) and Nakshatra (lunar mansion). This matrix — developed over fifteen years of cross-disciplinary research — demonstrates that sound, movement, and cosmic geometry are three expressions of the same mathematical reality.</p>
+
+  <table class="raga-table">
+    <thead><tr><th>Nakshatra</th><th>Corresponding Raga</th><th>Karana Numbers</th><th>Therapeutic Axis</th></tr></thead>
+    <tbody>
+      <tr><td>1. Aśvinī (Aries α,β)</td><td class="raga-name">Mohanam / Hamsadhvani</td><td>1, 28, 55, 82</td><td>Rapid healing, divine medicine</td></tr>
+      <tr><td>2. Bharaṇī (Aries 41)</td><td class="raga-name">Kafi</td><td>2, 29, 56, 83</td><td>Transformation, deep karmic release</td></tr>
+      <tr><td>3. Kṛttikā (Pleiades)</td><td class="raga-name">Bhairav</td><td>3, 30, 57, 84</td><td>Purification, the Agni (fire) principle</td></tr>
+      <tr><td>4. Rohiṇī (Aldebaran)</td><td class="raga-name">Kalyāṇī / Yaman</td><td>4, 31, 58, 85</td><td>Abundance, growth, Brahma's creativity</td></tr>
+      <tr><td>5. Mṛgaśirā (Orion's head)</td><td class="raga-name">Bhupali</td><td>5, 32, 59, 86</td><td>Gentle search, Śānta quality</td></tr>
+      <tr><td>14. Citrā (Spica)</td><td class="raga-name">Todi</td><td>14, 41, 68, 95</td><td>Sacred geometry, Sri Chakra alignment</td></tr>
+      <tr><td>27. Revatī (ζ Piscium)</td><td class="raga-name">Bhairavi</td><td>27, 54, 81, 108</td><td>Completion, dissolution, final resolution</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <span class="callout-label">Full Tri-Axis Matrix</span>
+    <p>The complete 108 × 27 × 72 tri-axis matrix — covering all 108 Karanas, all 27 Nakshatras, and all 72 Melakarthas in a single integrated system — is the centrepiece of the Complete Celestial Synthesis research domain at <strong>completecelestialsynthesis.culturalmusings.com</strong>. It constitutes the most comprehensive cross-disciplinary mapping of ancient Indian knowledge systems ever compiled.</p>
+  </div>
+
+  <section class="section" id="sec-society">
+    <h2 class="section-h">Music in <em>Contemporary Society</em> — The Restoration Imperative</h2>
+    <p>Contemporary society has progressively externalised music — transforming it from an active daily practice into a passive commodity consumed through screens. This transformation has profound consequences for public health, cognitive development, social cohesion, and individual wellbeing. The neuroscience of music clearly indicates that passive listening, while beneficial, provides a fraction of the neurological, hormonal, and developmental benefits of active music-making. The Vedic prescription — daily active engagement with music as a healthcare practice — is one of the most evidence-based health recommendations available. <a href="https://parasakthifamily.org/" class="source-ref" target="_blank">Parashakti</a></p>
+  </section>
+</section>
+
+<!-- ═══════════════════════════════════════
+     PART VI — TRAINING PATHWAYS
+═══════════════════════════════════════ -->
+<div class="part-header page-break" id="part-6">
+  <div class="part-num">VI</div>
+  <div class="part-eyebrow">Part Six · Pages 35–44</div>
+  <h2 class="part-title">Training Pathways —<br><em>Body, Mind &amp; Soul</em></h2>
+  <p class="part-intro">How one should be trained in music — from the perspective of learning, meditation, somatic integration, and the complete practice of Raga as a discipline of consciousness. These 44 core practices represent the distilled wisdom of 15 years of research across the complete Cultural Musings archive.</p>
+</div>
+
+<!-- Page 35-37 -->
+<div class="page-marker">Pages 35–37</div>
+<section class="section" id="sec-learn">
+  <h2 class="section-h">The <em>Learning Perspective</em></h2>
+  <p>Raga learning in the classical tradition is not like learning a Western instrument. It is not primarily a technical skill acquisition but a progressive initiation into a living knowledge system. The traditional Gurukula (teacher-disciple) model is designed not to transmit information but to transmit understanding — the difference between knowing the notes of a Raga and knowing the Raga itself.</p>
+
+  <div class="phase-block phase-1">
+    <div class="phase-header">
+      <div class="phase-badge">I</div>
+      <div><h3>Śravaṇa — Deep Listening</h3><div class="phase-dur">Years 1–2 · Foundation Phase</div></div>
+    </div>
+    <div class="phase-body">
+      <p>Before any instrument is touched, the classical tradition prescribes a period of pure listening — Śravaṇa. The student listens daily to masters performing the Ragas they will eventually learn. This is not passive background music. It is focused, analytical listening: identifying the Āroha, Avaroha, the characteristic phrases, the Gamakas, the emotional quality. The body is learning to recognise Ragas at a pre-cognitive level — establishing the acoustic templates that will guide performance years later.</p>
+      <ul class="key-list">
+        <li><strong>Daily practice:</strong> 1 hour of focused listening per day — different Raga each week</li>
+        <li><strong>Journaling:</strong> Document the emotional and physiological effects of each Raga listened to</li>
+        <li><strong>Sa Sādhana:</strong> Begin daily 20-minute practice of holding the tonic Sa — finding the pitch, matching it with the breath, feeling it resonate in the chest and skull</li>
+        <li><strong>Svarajñāna:</strong> Learn to identify all seven Svaras and their Komal/Tīvra variants by ear — before reading any notation</li>
+        <li><strong>Tāla foundation:</strong> Daily practice of 10 basic Talas through clapping (Konnakol or Tāli) — rhythm as the body's complement to melody</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="phase-block phase-2">
+    <div class="phase-header">
+      <div class="phase-badge">II</div>
+      <div><h3>Abhyāsa — Systematic Practice</h3><div class="phase-dur">Years 2–5 · Technical Foundation</div></div>
+    </div>
+    <div class="phase-body">
+      <p>The second phase introduces systematic technical practice — Ālāp (slow unmetered exploration of the Raga), Tāna (fast note patterns), and the performance forms appropriate to the tradition. The goal of Abhyāsa is not speed or complexity but authenticity: every note played with full awareness of its position in the Raga's grammar, its appropriate Gamaka, and its emotional role.</p>
+      <ul class="key-list">
+        <li><strong>Ālāp practice:</strong> Begin every practice session with 20–40 minutes of Ālāp in the current Raga — no rhythm, no accompaniment, pure exploration of the Raga's melodic space</li>
+        <li><strong>Gamaka training:</strong> Systematic practice of the 15 classical Gamakas (ornamental movements) as independent exercises before applying them to specific Ragas</li>
+        <li><strong>Sargam (notation):</strong> Learn to notate and read basic Raga phrases in Indian notation (Sa Re Ga) — reinforcing the ear training with visual representation</li>
+        <li><strong>Composition study:</strong> Learn 5–10 classical compositions (Kriti, Khayāl, or Dhrupad) in the primary training Ragas — absorbing idiomatic Raga grammar through repertoire</li>
+        <li><strong>Shruti refinement:</strong> Daily practice with a Shruti box or tanpura — matching precise microtonal intervals. The ear's ability to distinguish Śrutis is the technical foundation of Raga identity</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="phase-block phase-3">
+    <div class="phase-header">
+      <div class="phase-badge">III</div>
+      <div><h3>Mananam — Internalisation</h3><div class="phase-dur">Years 5–10 · Deepening Phase</div></div>
+    </div>
+    <div class="phase-body">
+      <p>The third phase is the most critical and most frequently skipped in modern music education: Mananam — internalisation. This is the stage where the Raga stops being a thing the musician does and becomes something the musician is. The Raga must be heard internally — at the Madhyamā Vāk level — before it is expressed externally. This is when a performer begins to "hear" complete new phrases in a Raga that they have never practiced but that are grammatically coherent and emotionally true to the Raga's character.</p>
+      <ul class="key-list">
+        <li><strong>Manodharma Sangīta:</strong> Begin improvisation practice — creating new phrases within the Raga's grammar. The test: would a master recognise this as the correct Raga from these improvised phrases?</li>
+        <li><strong>Cross-Raga study:</strong> Learn to identify and articulate what makes two similar Ragas different (e.g., Bhairav vs. Bhairavi, Todi vs. Gujari Todi)</li>
+        <li><strong>Rāga Dhyāna:</strong> Meditative contemplation of a single Raga — sitting in silence with the Raga's image in the mind before beginning practice</li>
+        <li><strong>Seasonal alignment:</strong> Begin aligning practice with the Raga's prescribed time — practicing Bhairav at dawn, Yaman at dusk. Notice the difference in quality</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Page 38-40 -->
+<div class="page-marker">Pages 38–40</div>
+<section class="section" id="sec-meditate">
+  <h2 class="section-h">The <em>Meditative Perspective</em></h2>
+  <p>Every major text of Indian philosophy identifies music — specifically Raga practice — as a direct path to the meditative state and ultimately to liberation. This is not a peripheral claim. The Nārada Bhakti Sūtras identify Nāda Yoga (the yoga of sound) as one of the primary paths to self-realisation. The Hatha Yoga Pradīpikā's fourth chapter (Samādhi Prakaraṇa) explicitly describes the Nāda as the final vehicle of Yoga. <a href="https://shlokam.org/shloka/rudram-namakam.htm" class="source-ref" target="_blank">Rudram Namakam</a></p>
+
+  <div class="skt-block">
+    <div class="skt-text">एको नादोऽनुसन्धेयः — नादो नादे प्रतिष्ठितः</div>
+    <div class="skt-trans">"There is one Nāda to be attended to — the Nāda stands established in Nāda."</div>
+    <div class="skt-source">Hatha Yoga Pradīpikā 4.66</div>
+  </div>
+
+  <div class="phase-block phase-4">
+    <div class="phase-header">
+      <div class="phase-badge">IV</div>
+      <div><h3>Nāda Dhyāna — Sound Meditation</h3><div class="phase-dur">Daily practice · All levels</div></div>
+    </div>
+    <div class="phase-body">
+      <p>Nāda Dhyāna is the meditation practice specific to the Raga tradition. It moves through four stages, corresponding to the four levels of sound (Vāk):</p>
+      <ul class="key-list">
+        <li><strong>Stage 1 — Śravaṇa Dhyāna:</strong> Listen to a single Raga recording (20–45 minutes) with full meditative attention. No other activity. Eyes closed. Follow every phrase, every Gamaka, every emotional transition. This is active listening as a contemplative practice — the Raga becomes an object of meditation.</li>
+        <li><strong>Stage 2 — Smaraṇa Dhyāna:</strong> Without any sound playing, mentally "hear" the Raga in inner silence. Reconstruct its phrases, its Āroha-Avaroha, its characteristic movements, from memory. This is Madhyamā Vāk practice — developing the inner acoustic imagination. 10–20 minutes daily.</li>
+        <li><strong>Stage 3 — Mantra-Nāda Integration:</strong> Begin each practice session with Sa-chanting — holding the tonic note as a mantra-like sustained tone for 5–10 minutes. Feel the vibration in the body. Notice where the sound resonates. This is direct Prāṇa-field calibration through Nāda.</li>
+        <li><strong>Stage 4 — Anāhata Śravaṇa:</strong> Advanced practice — in deep meditation after sustained Raga practice, attend to the internal "sound that was not struck." Many practitioners report a subtle inner resonance — described in the classical texts as the sound of the cosmic OM — that arises after sustained Raga practice. This is the final frontier of Nāda Yoga.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="sub-h">The Five Meditative Approaches to Raga</h3>
+  <div class="grid-2">
+    <div class="card">
+      <h4>Rāga Bhāva Dhyāna</h4>
+      <p>Meditate on the emotional essence (Bhāva) of the Raga before practicing. Create an internal "mood space" that matches the Raga's Rasa. The Rāga Bhāva Dhyāna teaches that authentic Raga performance requires inhabiting the emotional state first — not producing it mechanically through notes.</p>
+    </div>
+    <div class="card">
+      <h4>Devatā Dhyāna</h4>
+      <p>Each Raga has a presiding deity or cosmic principle. Meditating on the Raga's Devatā before practice connects the acoustic exploration to its cosmic source — transforming practice from a musical activity into an act of worship (Pūjā through sound).</p>
+    </div>
+    <div class="card">
+      <h4>Nakshatra Alignment</h4>
+      <p>On nights corresponding to the Raga's assigned Nakshatra, practice that Raga at the prescribed time. The cosmic alignment is not metaphysical decoration — it is a precise temporal prescription for maximum therapeutic and meditative efficacy.</p>
+    </div>
+    <div class="card">
+      <h4>Sa-Anusandhāna</h4>
+      <p>The meditation of "searching for Sa" — the deepest meditative practice in Nāda Yoga. Sa (the tonic) is described as the ground of consciousness — Brahman in acoustic form. The practice of returning perpetually to Sa, from all the movements of the Raga, is a musical enactment of the Advaita recognition: all manifestation arises from and returns to the single ground of being.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Page 41-43 -->
+<div class="page-marker">Pages 41–43</div>
+<section class="section" id="sec-bodymind">
+  <h2 class="section-h">Body–Mind–Soul <em>Integration</em></h2>
+  <p>The complete practice of Raga Vidyā is not merely musical. It is a total integration protocol — addressing the physical body, the energetic body (Prāṇamaya Kosha), the mental body (Manomaya Kosha), and the wisdom body (Vijñānamaya Kosha) simultaneously. The following framework — derived from the five-phase Master Consciousness Protocol — provides a structured daily practice for this integration.</p>
+
+  <div class="phase-block phase-1">
+    <div class="phase-header">
+      <div class="phase-badge">🌅</div>
+      <div><h3>Body Integration — Prāṇa Nāda Practice</h3><div class="phase-dur">Morning routine · 30–45 minutes</div></div>
+    </div>
+    <div class="phase-body">
+      <p>The physical body must be prepared to become a resonant instrument before music can be practiced at depth. This requires addressing breath, posture, and the energy channels (Nāḍīs) that carry Prāṇa.</p>
+      <ul class="key-list">
+        <li><strong>Prāṇāyāma first (10–15 min):</strong> Nāḍī Śodhana (alternate nostril breathing) to balance the Iḍā and Piṅgalā channels — left brain / right brain hemispheric coherence — before any musical practice. This is MCP Phase I applied specifically to Raga preparation.</li>
+        <li><strong>Vocal warm-up as body scan:</strong> Beginning from the lowest comfortable Sa and ascending slowly through all seven Svaras — attending to where each note resonates in the body. This is both a warm-up and a diagnostic: the quality of resonance in each register reveals the current state of the corresponding Chakra.</li>
+        <li><strong>Karana integration:</strong> 10 minutes of specific Karanas chosen for their Raga correspondence. Before practicing Bhairav (dawn, root Chakra), perform the Karanas of the Pṛthvī (Earth) quarter. This aligns movement, sound, and cosmic timing simultaneously.</li>
+        <li><strong>Tanpura drone:</strong> Always practice against the sustained drone of a tanpura (or electronic tanpura). The continuous Sa-Pa-Sa drone is not accompaniment — it is the acoustic ground of consciousness against which the Raga's figures emerge. Practicing without it produces Ragas that float rootlessly.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="phase-block phase-2">
+    <div class="phase-header">
+      <div class="phase-badge">🧠</div>
+      <div><h3>Mind Integration — Cognitive Raga Practice</h3><div class="phase-dur">Core practice · 45–90 minutes</div></div>
+    </div>
+    <div class="phase-body">
+      <p>The cognitive dimensions of Raga practice include analysis, improvisation, composition, and the development of Manodharma (musical intelligence). Mind integration addresses the left-brain (analytical) and right-brain (intuitive) aspects of musical cognition simultaneously.</p>
+      <ul class="key-list">
+        <li><strong>Ālāp first:</strong> Always begin the core practice with free, unmetered Ālāp — no rhythm, no composition. This develops musical intelligence and ensures that technical practice emerges from genuine exploration rather than mechanical repetition.</li>
+        <li><strong>Theoretical contemplation:</strong> Spend 10 minutes per session studying the theory of the Raga being practiced: its Melakartha, its Vādī-Samvādī, its Rasa, its historical masters. The mind that understands the Raga intellectually performs it more authentically.</li>
+        <li><strong>Improvisation practice (Manodharma):</strong> After Ālāp, spend 15–20 minutes in structured improvisation — creating new phrases, testing the Raga's boundaries, discovering unusual note combinations that remain grammatically correct. This develops the most important musical faculty: musical judgment (Savāda).</li>
+        <li><strong>Cross-disciplinary integration:</strong> Study the Nakshatra and Karana correspondence of the day's Raga. Read the associated verse from the Rudram or Lalitha Sahasranama. <a href="https://shlokam.org/shloka/lalitha-sahasranamam.htm" class="source-ref" target="_blank">Lalitha Sahasranama</a> The cross-disciplinary context deepens musical understanding beyond what any purely technical practice can produce.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="phase-block phase-5">
+    <div class="phase-header">
+      <div class="phase-badge">🙏</div>
+      <div><h3>Soul Integration — Bhāva Sādhana</h3><div class="phase-dur">Evening practice · 20–40 minutes</div></div>
+    </div>
+    <div class="phase-body">
+      <p>The soul dimension of Raga practice — Bhāva Sādhana — is the most subtle and most neglected. Bhāva is not emotion as understood in psychology — it is the Vedic concept of the pre-linguistic feeling-state that is the true source of authentic musical expression. Bhāva Sādhana is the cultivation of the inner emotional palette from which genuine music emerges.</p>
+      <ul class="key-list">
+        <li><strong>Evening Raga selection:</strong> Choose the evening Raga (Yaman, Bhimpalasi, Desh) not from a syllabus but from inner resonance — what is the body calling for at this time? This develops musical intuition and aligns practice with the body's natural rhythms.</li>
+        <li><strong>Rasa Sādhana:</strong> Before playing, sit in silence and consciously cultivate the Rasa of the chosen Raga. For Yaman (Śṛṅgāra), bring to mind an image of beauty, love, or devotion. For Bhairavi (Karuṇa), hold compassion for some suffering in the world. Let the Bhāva arise before the sound.</li>
+        <li><strong>Surrender practice:</strong> In the classical tradition, Raga performance is ultimately an offering — Naivedya (musical offering to the divine). End each practice session with a short piece performed as dedication — not for assessment, not for audience, but as an unconditional offering. This transforms practice from self-improvement to devotional act.</li>
+        <li><strong>Silence integration:</strong> End every practice with 5–10 minutes of complete silence. The silence after music is itself a state — it carries the resonance of the practice. This silence is as important as the music; it allows the nervous system to integrate what the Raga has activated.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Page 44 — THE 44 CORE PRACTICES -->
+<div class="page-marker">Page 44 — Core Practices</div>
+<section class="section" id="sec-sadhana">
+  <h2 class="section-h">The 44 Core Practices — <em>Raga Vidyā Sādhana</em></h2>
+  <p>The following 44 practices constitute the complete Raga Vidyā Sādhana — one practice corresponding to each page of this document. They are organised in five streams: Foundational (1–8), Acoustic (9–16), Meditative (17–24), Therapeutic (25–32), and Integrative (33–44). <a href="https://www.opensadhaka.com/" class="source-ref" target="_blank">Open Sadhaka</a></p>
+
+  <div class="grid-2">
+    <div>
+      <h3 class="sub-h">Stream A — Foundational (Practices 1–8)</h3>
+      <ul class="key-list">
+        <li><strong>1. Sa Sādhana</strong> — Daily 20-min practice of holding Sa as mantra</li>
+        <li><strong>2. Śruti Discrimination</strong> — Ear training for all 22 Śrutis</li>
+        <li><strong>3. Svara Identification</strong> — Blind identification of all 12 chromatic positions</li>
+        <li><strong>4. Tāla Practice</strong> — Daily clapping of 10 core Talas</li>
+        <li><strong>5. Tanpura Meditation</strong> — 20 min daily against drone</li>
+        <li><strong>6. Raga Listening Journal</strong> — Document emotional effects of one Raga per week</li>
+        <li><strong>7. Melakartha Study</strong> — One Melakartha per week, systematic analysis</li>
+        <li><strong>8. Gamaka Practice</strong> — Daily drill of 5 core Gamakas as standalone exercises</li>
+      </ul>
+
+      <h3 class="sub-h">Stream B — Acoustic (Practices 9–16)</h3>
+      <ul class="key-list">
+        <li><strong>9. Daily Ālāp</strong> — 30 min free Ālāp before any other practice</li>
+        <li><strong>10. Tāna Practice</strong> — Fast note patterns in current Raga</li>
+        <li><strong>11. Composition Memorisation</strong> — One new composition per month</li>
+        <li><strong>12. Raga Anatomy Analysis</strong> — Written analysis of one Raga per week (7-step protocol)</li>
+        <li><strong>13. Comparative Raga Study</strong> — Weekly comparison of two similar Ragas</li>
+        <li><strong>14. Janya Raga Mapping</strong> — Identify 5 Janya Ragas of current Melakartha</li>
+        <li><strong>15. Sargam Notation</strong> — Notate and transcribe one phrase per day</li>
+        <li><strong>16. Master Recording Study</strong> — Deep listening to one master performance per week</li>
+      </ul>
+
+      <h3 class="sub-h">Stream C — Meditative (Practices 17–24)</h3>
+      <ul class="key-list">
+        <li><strong>17. Rāga Bhāva Dhyāna</strong> — Pre-practice Rasa meditation (10 min)</li>
+        <li><strong>18. Devatā Dhyāna</strong> — Meditate on Raga's presiding deity before practice</li>
+        <li><strong>19. Smaraṇa Dhyāna</strong> — Mental Raga reconstruction in silence (15 min)</li>
+        <li><strong>20. Sa-Anusandhāna</strong> — Return-to-Sa meditation after improvisation</li>
+        <li><strong>21. Silence Integration</strong> — 5-10 min silence after every practice</li>
+        <li><strong>22. Nāḍī Śodhana Pre-Practice</strong> — Alternate nostril breathing before music</li>
+        <li><strong>23. Anāhata Listening</strong> — Post-practice attention to inner resonance</li>
+        <li><strong>24. Dream Raga Journal</strong> — Record any musical imagery from dreams</li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="sub-h">Stream D — Therapeutic (Practices 25–32)</h3>
+      <ul class="key-list">
+        <li><strong>25. Time-Aligned Practice</strong> — Practice only the Raga prescribed for current Prahara</li>
+        <li><strong>26. Seasonal Raga</strong> — Include the current Ṛtu (season) Raga weekly</li>
+        <li><strong>27. Chakra Raga Protocol</strong> — One Chakra per day, its corresponding Raga</li>
+        <li><strong>28. Personal Pharmacopoeia</strong> — Track your emotional/physical response to each Raga</li>
+        <li><strong>29. Nakshatra Practice</strong> — Practice corresponding Raga on Janma Nakshatra days</li>
+        <li><strong>30. Karana Integration</strong> — Perform the corresponding Karana before its Raga</li>
+        <li><strong>31. Clinical Journaling</strong> — Document therapeutic outcomes of Raga practice over 40 days</li>
+        <li><strong>32. Group Nāda Practice</strong> — Monthly group Raga listening/performance session</li>
+      </ul>
+
+      <h3 class="sub-h">Stream E — Integrative (Practices 33–44)</h3>
+      <ul class="key-list">
+        <li><strong>33. Cross-Disciplinary Study</strong> — Read primary source texts alongside Raga study <a href="https://sanskritdocuments.org/" class="source-ref" target="_blank">Sanskrit Docs</a></li>
+        <li><strong>34. Mantra-Nāda Integration</strong> — Combine Bīja mantra of current Chakra with its Raga</li>
+        <li><strong>35. Rudram Recitation</strong> — Weekly recitation of Rudram alongside Bhairav practice <a href="https://www.medhajournal.com/rudram-chamakam-an-original-explanation/" class="source-ref" target="_blank">Medha Journal</a></li>
+        <li><strong>36. Lalitha Sahasranama Study</strong> — One name per day with its acoustic meaning <a href="http://isatsang.blogspot.com/2013/05/sri-lalitha-sahasranamam-with-meaning.html" class="source-ref" target="_blank">iSatsang</a></li>
+        <li><strong>37. Surrender Performance</strong> — Daily 5-10 min offering at end of practice</li>
+        <li><strong>38. Teaching Practice</strong> — Teach what you know to another — deepens own understanding</li>
+        <li><strong>39. Natural Sound Alignment</strong> — Spend time weekly listening to the sounds of nature as Nāda</li>
+        <li><strong>40. Raga in Movement</strong> — Dance/move freely to a Raga recording without technique</li>
+        <li><strong>41. 40-Day Raga Sādhana</strong> — Choose one Raga and practice it exclusively for 40 days</li>
+        <li><strong>42. Pre-Dawn Brahma Muhūrta</strong> — Practice Sa Sādhana at 4am monthly — cosmic alignment</li>
+        <li><strong>43. Annual Raga Recital</strong> — Annual performance before teacher/community — accountability</li>
+        <li><strong>44. The Lifelong Commitment</strong> — Recognise that Raga Vidyā is not a subject to be mastered but a path to be walked — every session is both a beginning and a continuation.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="pull">
+    <p>"Raga Vidyā is not a skill. It is not a hobby. It is not a cultural activity for enthusiasts. It is a complete technology of human transformation — one that addresses simultaneously the physical, energetic, mental, wisdom, and bliss bodies of the human system. Every Raga learned is a doorway. Every Sa held is a homecoming. Every session of honest practice is a small liberation."</p>
+    <cite>— Naredla Rama Chandra · Cultural Musings</cite>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     REFERENCES
+═══════════════════════════════════════ -->
+<section class="section" id="sec-references">
+  <h2 class="section-h">Primary <em>Sources &amp; References</em></h2>
+  <p>This document draws from the following primary sources, authoritative repositories, and specialist research platforms. All references are publicly accessible; full citations are maintained in the Cultural Musings research archive.</p>
+
+  <h3 class="sub-h">Vedic & Sanskrit Primary Sources</h3>
+  <div class="ref-grid">
+    <div class="ref-item"><a href="https://vedicheritage.gov.in/introduction/" target="_blank">vedicheritage.gov.in</a><span>Government of India Vedic Heritage Portal — primary Vedic texts and commentary</span></div>
+    <div class="ref-item"><a href="https://hindupedia.com/en/Veda" target="_blank">hindupedia.com/en/Veda</a><span>Comprehensive Veda reference and commentary</span></div>
+    <div class="ref-item"><a href="https://veda.harekrsna.cz/encyclopedia/scriptures.htm" target="_blank">veda.harekrsna.cz</a><span>Vedic scriptures encyclopedia</span></div>
+    <div class="ref-item"><a href="https://archive.org/details/CompleteWorksOfSriSankaracharyaIn20Volumes1910Edition" target="_blank">archive.org — Shankaracharya 20 vols</a><span>Complete Works of Sri Shankaracharya, 1910 edition</span></div>
+    <div class="ref-item"><a href="https://hinduebooks.blogspot.com/2010/08/works-of-sri-sankaracharya-sanskrit-20.html" target="_blank">hinduebooks.blogspot.com</a><span>Works of Sri Shankaracharya — Sanskrit, 20 volumes</span></div>
+    <div class="ref-item"><a href="https://krishna2.com/2019-books-shankaracharya.html" target="_blank">krishna2.com</a><span>Shankaracharya complete works — study resource</span></div>
+    <div class="ref-item"><a href="https://www.veducation.world/library" target="_blank">veducation.world/library</a><span>Vedic education library — texts and translations</span></div>
+    <div class="ref-item"><a href="https://openlibrary.org/subjects/advaita" target="_blank">openlibrary.org — Advaita</a><span>Open Library Advaita subject collection</span></div>
+  </div>
+
+  <h3 class="sub-h">Raga Science & Music Theory</h3>
+  <div class="ref-grid">
+    <div class="ref-item"><a href="https://ragamath.com/" target="_blank">ragamath.com</a><span>Computational Raga mathematics — formal analysis</span></div>
+    <div class="ref-item"><a href="https://melakarta.com/" target="_blank">melakarta.com</a><span>Melakarta raga charts — complete visual reference</span></div>
+    <div class="ref-item"><a href="https://ragajunglism.org/ragas/masterlist" target="_blank">ragajunglism.org/ragas/masterlist</a><span>Masterlist of 1000+ Ragas — Hindustani Index</span></div>
+    <div class="ref-item"><a href="https://ragajunglism.org/ragas" target="_blank">ragajunglism.org/ragas</a><span>Raga Junglism — global music reference</span></div>
+    <div class="ref-item"><a href="https://amitray.com/the-84-ragas-of-indian-classical-music-a-complete-guide" target="_blank">amitray.com — 84 Ragas Guide</a><span>The 84 Ragas of Indian Classical Music — complete guide</span></div>
+    <div class="ref-item"><a href="https://chromatone.center/theory/scales/raga" target="_blank">chromatone.center/theory/scales/raga</a><span>Indian Raga scale theory — visual analysis</span></div>
+    <div class="ref-item"><a href="https://computationalmusic.com/raga-classification-system.html" target="_blank">computationalmusic.com</a><span>Raga Classification System — computational analysis</span></div>
+    <div class="ref-item"><a href="https://web-harmonium.com/harmonium-notes" target="_blank">web-harmonium.com/harmonium-notes</a><span>Sargam guide — practical notation reference</span></div>
+  </div>
+
+  <h3 class="sub-h">Mantra, Tantra & Sacred Texts</h3>
+  <div class="ref-grid">
+    <div class="ref-item"><a href="https://shlokam.org/shloka/rudram-namakam.htm" target="_blank">shlokam.org — Rudram Namakam</a><span>Sri Rudram with pronunciation and meaning</span></div>
+    <div class="ref-item"><a href="https://www.medhajournal.com/rudram-chamakam-an-original-explanation/" target="_blank">medhajournal.com — Rudram Chamakam</a><span>Original scholarly explanation of Rudram Chamakam</span></div>
+    <div class="ref-item"><a href="https://shlokam.org/shloka/lalitha-sahasranamam.htm" target="_blank">shlokam.org — Lalitha Sahasranama</a><span>Lalitha Sahasranama with word-by-word meaning</span></div>
+    <div class="ref-item"><a href="http://isatsang.blogspot.com/2013/05/sri-lalitha-sahasranamam-with-meaning.html" target="_blank">isatsang — Lalitha Sahasranama</a><span>Sri Lalitha Sahasranama with detailed meaning</span></div>
+    <div class="ref-item"><a href="https://www.kamakoti.org/kamakoti/details/naradapurana12.html" target="_blank">kamakoti.org — Narada Purana 12</a><span>Narada Purana Chapter 12 — music and Nada science</span></div>
+    <div class="ref-item"><a href="https://www.kamakoti.org/kamakoti/details/skandapurana49.html" target="_blank">kamakoti.org — Skanda Purana 49</a><span>Skanda Purana Chapter 49 — acoustic cosmology</span></div>
+    <div class="ref-item"><a href="https://www.vedadhara.com/english-topics-mantra-shastra" target="_blank">vedadhara.com — Mantra Shastra</a><span>Mantra Shastra reference — acoustic medicine</span></div>
+    <div class="ref-item"><a href="https://sanskritdocuments.org/" target="_blank">sanskritdocuments.org</a><span>Sanskrit text digital archive — primary documents</span></div>
+  </div>
+
+  <h3 class="sub-h">Cultural Musings Research Domains</h3>
+  <div class="ref-grid">
+    <div class="ref-item"><a href="https://nada-chikitsa.culturalmusings.com" target="_blank">nada-chikitsa.culturalmusings.com</a><span>Nada Chikitsa — complete Raga pharmacopoeia and clinical protocols</span></div>
+    <div class="ref-item"><a href="https://nadabrahman.culturalmusings.com" target="_blank">nadabrahman.culturalmusings.com</a><span>Nada Brahman — sound as cosmic substrate</span></div>
+    <div class="ref-item"><a href="https://completecelestialsynthesis.culturalmusings.com" target="_blank">completecelestialsynthesis.culturalmusings.com</a><span>Complete Celestial Synthesis — full 108 × 27 × 72 matrix</span></div>
+    <div class="ref-item"><a href="https://music.cultualmusings.com" target="_blank">music.cultualmusings.com</a><span>Music · Raga Science Hub — central Raga repository</span></div>
+    <div class="ref-item"><a href="https://natyashastra.cultualmusings.com" target="_blank">natyashastra.cultualmusings.com</a><span>Natya Shastra — 108 Karanas and Raga-movement science</span></div>
+    <div class="ref-item"><a href="https://masterconsciousprotocol.culturalmusings.com" target="_blank">masterconsciousprotocol.culturalmusings.com</a><span>Master Consciousness Protocol — 5-phase clinical framework</span></div>
+    <div class="ref-item"><a href="https://bioresonancemusings.culturalmusings.com" target="_blank">bioresonancemusings.culturalmusings.com</a><span>Bio Resonance Musings — Prana field and quantum biology</span></div>
+    <div class="ref-item"><a href="https://www.culturalmusings.com" target="_blank">culturalmusings.com</a><span>Main Cultural Musings portal — all 13 research domains</span></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Raga Vidyā · Cultural Musings</div>
+  <p class="footer-sub">Naredla Rama Chandra · Independent Researcher &amp; Author · culturalmusings.com</p>
+  <p class="footer-sub" style="margin-top:0.5rem;font-size:0.82rem;color:var(--muted);">
+    "What is the Karana, that is the Swara. What is the Swara, that is Brahman. What is Brahman, that alone is the Body."
+  </p>
+  <a href="index.html" class="footer-link">← Return to Cultural Musings Main Site</a>
+</footer>
+
+</main>
+
+<!-- ══════════════════════════════
+     JAVASCRIPT
+══════════════════════════════ -->
+<script>
+/* Progress bar */
+window.addEventListener('scroll', () => {
+  const doc = document.documentElement;
+  const scrolled = doc.scrollTop || document.body.scrollTop;
+  const total = doc.scrollHeight - doc.clientHeight;
+  const pct = (scrolled / total) * 100;
+  document.getElementById('progress-bar').style.width = pct + '%';
+});
+
+/* TOC */
+function toggleTOC() {
+  const toc = document.getElementById('toc-sidebar');
+  const btn = document.getElementById('toc-toggle');
+  const bd  = document.getElementById('toc-backdrop');
+  toc.classList.toggle('open');
+  btn.classList.toggle('open');
+  bd.classList.toggle('open');
+}
+function closeTOC() {
+  document.getElementById('toc-sidebar').classList.remove('open');
+  document.getElementById('toc-toggle').classList.remove('open');
+  document.getElementById('toc-backdrop').classList.remove('open');
+}
+
+/* Active TOC highlighting */
+const sections = document.querySelectorAll('[id]');
+const tocLinks = document.querySelectorAll('.toc-link');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      tocLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+      });
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+
+sections.forEach(s => observer.observe(s));
+
+/* Smooth nav for ESC */
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeTOC();
+});
+</script>
+
+</body>
+</html>
